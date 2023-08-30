@@ -19,7 +19,7 @@
 
 <div class="container">
     <h1 style="text-align: center">Danh sách nhà xuất bản</h1>
-    <a class="btn btn-primary" href="PublisherServlet?action=create">create</a>
+    <a class="btn btn-primary" href="/Publisher?action=create">create</a>
     <table class="table table-hover">
         <tr>
             <th>STT</th>
@@ -28,11 +28,10 @@
         </tr>
         <c:forEach items="${publishers}" var="P">
             <tr>
-                <td>${P.getId}</td>
+                <td>${P.getId()}</td>
                 <td>${P.getName()}</td>
 
-                <td><a  class="btn btn-warning" href="PublisherServlet?action=update&&id=${P.getId()}">Update</a></td>
-                <td><a class="btn btn-danger" href="PublisherServlet?action=delete&&id=${P.getId()}">Delete</a></td>
+                <td><a  class="btn btn-warning" href="/Publisher?action=update&&id=${P.getId()}">Update</a></td>
             </tr>
         </c:forEach>
     </table>
