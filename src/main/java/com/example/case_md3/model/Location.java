@@ -3,12 +3,28 @@ package com.example.case_md3.model;
 public class Location {
     private int id;
     private String name;
+    private String details ;
 
-    public Location(int id, String name) {
+    public Location(String name, String details) {
+        this.name = name;
+        this.details = details;
+    }
+
+    public Location(int id, String name, String details) {
         this.id = id;
         this.name = name;
+        this.details = details;
     }
+
     public Location() {
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
     }
 
     public int getId() {
