@@ -1,0 +1,63 @@
+create database  Unicorm_library;
+
+use Unicorm_library;
+
+create table publisher(
+id int auto_increment primary key,
+name varchar(45)
+);
+
+create table category(
+id int auto_increment primary key,
+name varchar(45)
+);
+
+create table location(
+id int auto_increment primary key,
+name varchar(45),
+details varchar(200)
+);
+
+create table roles(
+id int auto_increment primary key,
+permission varchar(45)
+);
+
+create table acc(
+id int auto_increment primary key,
+email varchar(50),
+pass varchar(6),
+idPermission int 
+);
+
+alter table acc add foreign key(idPermission) references roles(id);
+
+create table book(
+id int auto_increment primary key,
+idPublisher int,
+idCategory int,
+idLocation int,
+condision varchar(45),
+stastus varchar(45)
+);
+
+alter table book add foreign key(idPublisher) references publisher(id);
+alter table book add foreign key(idCategory) references category(id);
+alter table book add foreign key(idLocation) references location(id);
+
+create table borrowing_book(
+id int auto_increment primary key,
+book int,
+status varchar(50)
+);
+
+alter table borrowing_book add foreign key(book) references book(id);
+
+create table borrowing_list(
+id int auto_increment primary key,
+idBorowingBook int,
+idUser int
+);
+
+alter table borrowing_list add foreign key(idBorowingBook) references borrowing_book(id);
+alter table borrowing_list add foreign key(idUser) references acc(id);
