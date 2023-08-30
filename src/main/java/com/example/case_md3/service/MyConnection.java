@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class MyConnection {
-    private final String URL = "jdbc:mysql://localhost:3306/quan_ly_san_pham?useSSL=false" ;
+    private final String URL = "jdbc:mysql://localhost:3306/Unicorm_library?useSSL=false" ;
     private final String userName = "root" ;
     private final String password = "123456";
     public Connection getConnection (){
