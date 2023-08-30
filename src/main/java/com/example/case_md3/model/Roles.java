@@ -1,4 +1,4 @@
-package model;
+package com.example.case_md3.model;
 
 public class Roles {
     private int id;

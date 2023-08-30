@@ -1,14 +1,14 @@
-package model;
+package com.example.case_md3.model;
 
-public class Location {
+public class Category {
     private int id;
     private String name;
 
-    public Location(int id, String name) {
+    public Category(int id, String name) {
         this.id = id;
         this.name = name;
     }
-    public Location() {
+    public Category() {
     }
 
     public int getId() {
