@@ -103,10 +103,7 @@ public class PublisherServlet extends HttpServlet  implements IPublisher {
     }
     @Override
     public void updatePost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        String name = request.getParameter("name");
-        Publisher publisher = new Publisher(id,name);
-        request.setAttribute("publisher",publisher);
         publisherServices.update(request);
+        display(request, response);
     }
 }

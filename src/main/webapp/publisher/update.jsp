@@ -18,11 +18,11 @@
 <div class="container">
     <h1 style="text-align: center">Cập nhật nhà xuất bản</h1>
     <form style="width: 500px; margin: auto"
-          action="/Publisher?action=updatePost" method="post">
+          action="/Publisher?action=updatePost&&id=${id}" method="post">
         <div class="mb-3">
             <label for="name" class="form-label">Tên nhà xuất bản</label>
             <input type="text" class="form-control"
-                   id="name" name="name" required>
+                   id="name" name="name" value="${publisher.getName()}" required>
         </div>
         <button class="btn btn-primary" type="submit">Cập nhật</button>
         <button class="btn btn-secondary" type="reset">Reset</button>
