@@ -3,61 +3,76 @@ create database  Unicorm_library;
 use Unicorm_library;
 
 create table publisher(
-id int auto_increment primary key,
-name varchar(45)
+                          id int auto_increment primary key,
+                          name varchar(45)
 );
 
 create table category(
-id int auto_increment primary key,
-name varchar(45)
+                         id int auto_increment primary key,
+                         name varchar(45)
 );
 
 create table location(
-id int auto_increment primary key,
-name varchar(45),
-details varchar(200)
+                         id int auto_increment primary key,
+                         name varchar(45),
+                         details varchar(200)
 );
 
 create table roles(
-id int auto_increment primary key,
-permission varchar(45)
+                      id int auto_increment primary key,
+                      permission varchar(45)
 );
 
 create table acc(
-id int auto_increment primary key,
-email varchar(50),
-pass varchar(6),
-idPermission int 
+                    id int auto_increment primary key,
+                    email varchar(50),
+                    pass varchar(6),
+                    idPermission int
 );
 
 alter table acc add foreign key(idPermission) references roles(id);
 
 create table book(
-id int auto_increment primary key,
-idPublisher int,
-idCategory int,
-idLocation int,
-condision varchar(45),
-stastus varchar(45)
+                     id int auto_increment primary key,
+                     idPublisher int,
+                     idCategory int,
+                     idLocation int,
+                     name varchar(45),
+                     img varchar(200),
+                     description varchar(45),
+                     status varchar(45)
 );
 
 alter table book add foreign key(idPublisher) references publisher(id);
 alter table book add foreign key(idCategory) references category(id);
 alter table book add foreign key(idLocation) references location(id);
 
-create table borrowing_book(
-id int auto_increment primary key,
-book int,
-status varchar(50)
-);
-
-alter table borrowing_book add foreign key(book) references book(id);
 
 create table borrowing_list(
-id int auto_increment primary key,
-idBorowingBook int,
-idUser int
+                               id int auto_increment primary key,
+                               idUser int
 );
-
-alter table borrowing_list add foreign key(idBorowingBook) references borrowing_book(id);
 alter table borrowing_list add foreign key(idUser) references acc(id);
+
+create table borrowing_book(
+                               id int auto_increment primary key,
+                               book int,
+                               status varchar(50),
+                               borrowing_list int
+);
+alter table borrowing_book add foreign key(borrowing_list) references borrowing_list(id);
+
+insert into category (name) values ('Sách lịch sử'), ('Sách Tin học'), ('Sách địa lý'), ('Tiểu thuyết'),('Sách toán'), ('Sách lý');
+
+
+insert into publisher (name) values ('Tuổi trẻ'), ('Kim Đồng'), ('Văn hóa việt'), ('test1'),('test2'), ('Sách lý');
+
+insert into location (name,details) values ('Khu vực tầng 1', 'Gia sách 1, khu A' ),
+                                           ('Khu vực tầng 1', 'Gia sách 2, khu A' ),
+                                           ('Khu vực tầng 2', 'Gia sách 1, khu B' ),
+                                           ('Khu vực tầng 3', 'Gia sách 1, khu C' );
+insert into book (idPublisher, idCategory, idLocation, name, img, description, status) values
+    (1, 1, 1, 'Lịch sử Việt Nam', 'ảnh 1', 'Lịch sử nh Nguyễn', 'mới'),
+    (2, 2, 1, 'tin học văn phòng', 'ảnh 2', 'Sach PowerPoint', 'cũ'),
+    (4, 1, 3, 'Tiểu thuyết hành trình của Tam Mao ', 'ảnh 3', 'câu chuện 1 cậu bé vô gia cư', 'mới'),
+    (4, 3, 2, 'Công chúa tiên cá', 'ảnh 4', '1 con cá tội nghiệp', 'mới');
