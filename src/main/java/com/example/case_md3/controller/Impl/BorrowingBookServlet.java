@@ -50,6 +50,9 @@ public class BorrowingBookServlet extends HttpServlet implements IBorrowingBookS
 
     @Override
     public void create(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        borrowingService.create(request);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/borrowing/book.jsp");
+        requestDispatcher.forward(request,response);
 
     }
 
@@ -67,7 +70,9 @@ public class BorrowingBookServlet extends HttpServlet implements IBorrowingBookS
 
     @Override
     public void createPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        borrowingService.create(request);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/borrowing/book.jsp");
+        requestDispatcher.forward(request,response);
     }
 
     @Override

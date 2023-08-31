@@ -19,10 +19,13 @@
         <th>status</th>
         <th>date_borrowing</th>
     </tr>
-    <c:forEach items="${borrowing}" var="b" >
-        <td><c:out value="${b.getId()}" /> </td>
-        <td><c:out value="${b.getBook().getName()}" /> </td>
-        <td><c:out value="${b.getStatus()}" /> </td>
+    <c:forEach items="${borrowing}" var="bor" >
+        <tr>
+        <td><c:out value="${bor.getId()}" /> aaa</td>
+        <td><c:out value="${bor.getBook().getName()}" /> </td>
+        <td><c:out value="${bor.getStatus()}" /> </td>
+        <td><c:out value="${bor.getDateBorrowing().toString()}" /> </td>
+        </tr>
     </c:forEach>
 </table>
 </body>

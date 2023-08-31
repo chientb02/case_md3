@@ -19,45 +19,42 @@ import java.util.List;
 public class BorrowingService implements IBorrowingService {
     private AccountService accountService;
     private BookService bookService;
-    private BorrowingListDAO borrowingListDAO;
+    private BorrowingListService borrowingListService;
     private BorrowingBookDAO borrowingBookDAO;
 
     public BorrowingService() {
         accountService = new AccountService();
-        bookService= new BookService();
-        borrowingListDAO = new BorrowingListDAO();
+        bookService = new BookService();
+        borrowingListService = new BorrowingListService();
         borrowingBookDAO = new BorrowingBookDAO();
     }
 
     @Override
     public List<Borrowing_Book> findAll() {
-        return null;
+        return borrowingBookDAO.findAll();
     }
 
     @Override
     public Borrowing_Book findOne(HttpServletRequest request) throws ServletException, IOException {
-        Borrowing_Book  borrowingBook = null;
-        HttpSession session = request.getSession();
-        int user = (int) session.getAttribute("id");
-        borrowingBookDAO.findOne(borrowingListDAO.findOne(accountService.findOne(user).getId()).getId());
-
+        Borrowing_Book borrowingBook = null;
         return borrowingBook;
     }
 
     @Override
     public void update(HttpServletRequest request) throws ServletException, IOException {
-         int id = Integer.parseInt(request.getParameter("id"));
-         Borrowing_Book book = borrowingBookDAO.findOne(id);
-         book.setStatus("đã trả");
-         borrowingBookDAO.update(book);
+        int id = Integer.parseInt(request.getParameter("id"));
+        Borrowing_Book book = borrowingBookDAO.findOne(id);
+        book.setStatus("đã trả");
+        borrowingBookDAO.update(book);
     }
 
     @Override
     public void create(HttpServletRequest request) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        int user = (int) session.getAttribute("id");
-        Book book = bookService.findOne((HttpServletRequest) session.getAttribute("idBook"));
-        Borrowing_Book borrowingBook = new Borrowing_Book(book,"Chưa trả",borrowingListDAO.findOne(user), LocalDateTime.now());
+        int user = (int) session.getAttribute("idUser");
+        borrowingListService.create(request);
+        Book book = bookService.findOne(request);
+        Borrowing_Book borrowingBook = new Borrowing_Book(book, "Chưa trả", borrowingListService.findByAccount(accountService.findOne(user)), LocalDateTime.now());
         borrowingBookDAO.create(borrowingBook);
     }
 
@@ -65,8 +62,8 @@ public class BorrowingService implements IBorrowingService {
     @Override
     public List<Borrowing_Book> findByUser(HttpServletRequest request) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        int user = (int) session.getAttribute("id");
-        return borrowingBookDAO.findByUser((borrowingListDAO.findOne(accountService.findOne(user).getId())));
+        int user = (int) session.getAttribute("idUser");
+        return borrowingBookDAO.findByUser((borrowingListService.findByAccount(accountService.findOne(user))));
     }
 
 }

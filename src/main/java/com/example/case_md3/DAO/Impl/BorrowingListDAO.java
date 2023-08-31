@@ -1,5 +1,7 @@
 package com.example.case_md3.DAO.Impl;
 
+import com.example.case_md3.model.Account;
+import com.example.case_md3.model.Borrowing_Book;
 import com.example.case_md3.model.Borrowing_List;
 import com.example.case_md3.service.MyConnection;
 
@@ -18,10 +20,18 @@ public class BorrowingListDAO implements com.example.case_md3.DAO.extendInterfac
         accountDAO = new AccountDAO();
     }
 
+<<<<<<< HEAD
     private String SELECT_ALL = "select * from borrowing_list;";
     private String SELECT_ONE = "select * from borrowing_list where id = ? ;";
     private String CREATE = "insert into borrowing_list(idUser) value (?)";
 
+=======
+    private String SELECT_ALL = "select * from borrowing_list;" ;
+    private String SELECT_ONE = "select * from borrowing_list where id = ? ;" ;
+    private String SELECT_BY_ACC = "select * from borrowing_list where idUser = ? ;" ;
+
+    private String CREATE = "insert into borrowing_list(idUser) value (?);";
+>>>>>>> testcart
     @Override
     public List<Borrowing_List> findAll() {
         List<Borrowing_List> borrowingLists = new ArrayList<>();
@@ -41,8 +51,14 @@ public class BorrowingListDAO implements com.example.case_md3.DAO.extendInterfac
     @Override
     public Borrowing_List findOne(int id) {
         Borrowing_List borrowingLists = null;
+<<<<<<< HEAD
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ONE)) {
             ResultSet resultSet = preparedStatement.executeQuery();
+=======
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ONE)){
+            preparedStatement.setInt(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery() ;
+>>>>>>> testcart
             while (resultSet.next()) {
                 int idBor = resultSet.getInt("id");
                 int idUser = resultSet.getInt("idUser");
@@ -61,10 +77,17 @@ public class BorrowingListDAO implements com.example.case_md3.DAO.extendInterfac
 
     @Override
     public void create(Borrowing_List borrowingList) {
+<<<<<<< HEAD
         try (PreparedStatement preparedStatement = connection.prepareStatement(CREATE)) {
             preparedStatement.setInt(1, borrowingList.getUser().getId());
             preparedStatement.executeUpdate();
         } catch (Exception e) {
+=======
+        try(PreparedStatement preparedStatement = connection.prepareStatement(CREATE)) {
+            preparedStatement.setInt(1,borrowingList.getUser().getId());
+            preparedStatement.executeUpdate();
+        }catch(Exception e){
+>>>>>>> testcart
             e.printStackTrace();
         }
     }
@@ -72,5 +95,22 @@ public class BorrowingListDAO implements com.example.case_md3.DAO.extendInterfac
     @Override
     public void delete(int id) {
 
+    }
+
+    @Override
+    public Borrowing_List findByAccount(Account account) {
+        Borrowing_List borrowingLists = null;
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SELECT_BY_ACC)){
+            preparedStatement.setInt(1,account.getId());
+            ResultSet resultSet = preparedStatement.executeQuery() ;
+            while (resultSet.next()) {
+                int idBor = resultSet.getInt("id");
+                int idUser = resultSet.getInt("idUser");
+                borrowingLists = new Borrowing_List(idBor,accountDAO.findOne(idUser));
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return borrowingLists;
     }
 }

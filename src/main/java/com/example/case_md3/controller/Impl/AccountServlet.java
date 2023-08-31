@@ -130,7 +130,7 @@ public class AccountServlet extends HttpServlet{
                     //đây là acc user nha, chuyển qua trang chủ user nhé
                     HttpSession session = request.getSession();
                     session.setAttribute("id", account.getId());
-                    response.sendRedirect(""); //=> đây là link nhé mng, link của user
+                    response.sendRedirect("/book/book.jsp"); //=> đây là link nhé mng, link của user
                 }
             } else {
                 HttpSession session = request.getSession();
