@@ -9,6 +9,10 @@ public class Borrowing_List {
         this.user = user;
     }
 
+    public Borrowing_List(Account user) {
+        this.user = user;
+    }
+
     public int getId() {
         return id;
     }
