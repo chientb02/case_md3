@@ -77,7 +77,6 @@ public class BookServlet extends HttpServlet implements IBook {
         request.setAttribute("image",image);
         request.setAttribute("description",description);
         request.setAttribute("status",status);
-
         request.setAttribute("publishers",publishers);
         request.setAttribute("locations",locations);
         request.setAttribute("categories",categories);

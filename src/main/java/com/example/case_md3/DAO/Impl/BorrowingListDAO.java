@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BorrowingListDAO implements com.example.case_md3.DAO.extendInterface.IBorrowingListDAO {
-    private Connection connection ;
+    private Connection connection;
     private AccountDAO accountDAO;
 
     public BorrowingListDAO() {
@@ -18,19 +18,21 @@ public class BorrowingListDAO implements com.example.case_md3.DAO.extendInterfac
         accountDAO = new AccountDAO();
     }
 
-    private String SELECT_ALL = "select * from borrowing_list;" ;
-    private String SELECT_ONE = "select * from borrowing_list where id = ? ;" ;
+    private String SELECT_ALL = "select * from borrowing_list;";
+    private String SELECT_ONE = "select * from borrowing_list where id = ? ;";
+    private String CREATE = "insert into borrowing_list(idUser) value (?)";
+
     @Override
     public List<Borrowing_List> findAll() {
         List<Borrowing_List> borrowingLists = new ArrayList<>();
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL)){
-            ResultSet resultSet = preparedStatement.executeQuery() ;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int idBor = resultSet.getInt("id");
                 int idUser = resultSet.getInt("idUser");
-                borrowingLists.add(new Borrowing_List(idBor,accountDAO.findOne(idUser)));
+                borrowingLists.add(new Borrowing_List(idBor, accountDAO.findOne(idUser)));
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return borrowingLists;
@@ -39,14 +41,14 @@ public class BorrowingListDAO implements com.example.case_md3.DAO.extendInterfac
     @Override
     public Borrowing_List findOne(int id) {
         Borrowing_List borrowingLists = null;
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ONE)){
-            ResultSet resultSet = preparedStatement.executeQuery() ;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ONE)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int idBor = resultSet.getInt("id");
                 int idUser = resultSet.getInt("idUser");
-                borrowingLists = new Borrowing_List(idBor,accountDAO.findOne(idUser));
+                borrowingLists = new Borrowing_List(idBor, accountDAO.findOne(idUser));
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return borrowingLists;
@@ -59,7 +61,12 @@ public class BorrowingListDAO implements com.example.case_md3.DAO.extendInterfac
 
     @Override
     public void create(Borrowing_List borrowingList) {
-
+        try (PreparedStatement preparedStatement = connection.prepareStatement(CREATE)) {
+            preparedStatement.setInt(1, borrowingList.getUser().getId());
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

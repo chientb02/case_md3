@@ -28,7 +28,7 @@ public class BorrowingBookDAO implements IBorrowingBook  {
     private String SELECT_ONE = "select * from borrowing_book where id = ?" ;
     private String SELECT_BY_USER = "select * from borrowing_book where borrowing_list = ?";
     private String CREATE = "insert into borrowing_book (book, status, borrowing_list ,date_borrowing) VALUES  (?,?,?,?)";
-    private String UPDATE = "update borrowing_book set status = ? where id = ?;" ;
+    private String UPDATE = "update borrowing_book set status = 'Đã trả' where id = ?;" ;
     @Override
     public List<Borrowing_Book> findAll() {
         List<Borrowing_Book> books = new ArrayList<>() ;
@@ -67,8 +67,7 @@ public class BorrowingBookDAO implements IBorrowingBook  {
     @Override
     public void update(Borrowing_Book borrowingBook) {
         try(PreparedStatement preparedStatement = connection.prepareStatement(UPDATE)){
-            preparedStatement.setString(1,borrowingBook.getStatus());
-            preparedStatement.setInt(2,borrowingBook.getId());
+            preparedStatement.setInt(1,borrowingBook.getId());
             preparedStatement.executeUpdate();
         }catch (Exception e) {
             e.printStackTrace();
