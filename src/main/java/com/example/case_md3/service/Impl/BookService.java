@@ -1,5 +1,6 @@
 package com.example.case_md3.service.Impl;
 
+import com.example.case_md3.DAO.Impl.BookDAO;
 import com.example.case_md3.controller.Impl.PublisherServlet;
 import com.example.case_md3.model.Book;
 import com.example.case_md3.service.IGenerateService;
@@ -10,9 +11,16 @@ import java.io.IOException;
 import java.util.List;
 
 public class BookService implements IGenerateService <Book> {
+    private BookDAO bookDAO;
+
+    public BookService() {
+        bookDAO = new BookDAO();
+    }
+
     @Override
     public List<Book> findAll() {
-        return null;
+        List<Book> books = bookDAO.findAll();
+        return books;
     }
 
     @Override

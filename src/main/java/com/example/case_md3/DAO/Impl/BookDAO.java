@@ -22,7 +22,7 @@ public class BookDAO implements IDAO<Book> {
 
 
 
-    private String list = "select  * from book; ";
+    private String list = "select  * from book;";
     private String findOne = "select  * from book where id=?; ";
     private String create = "insert into book (idPublisher, idCategory, idLocation, condision, status) values (?,?,?,?,?);";
     private  String update= "update book set (idPublisher = ?,idCategory =?,idLocation=?,condision=?,status=? ) where id=?;";
@@ -45,13 +45,13 @@ public class BookDAO implements IDAO<Book> {
                 int idLocation = Integer.parseInt(resultSet.getString("idLocation"));
                 String name = resultSet.getString("name");
                 String img = resultSet.getString("img");
-                String condision = resultSet.getString("condision");
+                String description = resultSet.getString("description");
                 String status = resultSet.getString("status");
                 Publisher publisher = publisherDAO.findOne(idPublisher);
                 Category category = categoryDAO.findOne(idCategory);
                 Location location = locationDAO.findOne(idLocation);
 
-                Book book = new Book(id,publisher,category,location,name,img,condision,status);
+                Book book = new Book(id,publisher,category,location,name,img,description,status);
                 books.add(book);
             }
         } catch (SQLException e) {
