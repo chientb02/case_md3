@@ -39,7 +39,7 @@ public class BorrowingListDAO implements com.example.case_md3.DAO.extendInterfac
     @Override
     public Borrowing_List findOne(int id) {
         Borrowing_List borrowingLists = null;
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL)){
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ONE)){
             ResultSet resultSet = preparedStatement.executeQuery() ;
             while (resultSet.next()) {
                 int idBor = resultSet.getInt("id");

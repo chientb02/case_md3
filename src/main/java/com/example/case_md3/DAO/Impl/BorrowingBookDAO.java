@@ -92,10 +92,10 @@ public class BorrowingBookDAO implements IBorrowingBook  {
     }
 
     @Override
-    public List<Borrowing_Book> findByUser(Account account) {
-        List<Borrowing_Book> books = null ;
+    public List<Borrowing_Book> findByUser(Borrowing_List borrowingList) {
+        List<Borrowing_Book> books = new ArrayList<>() ;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_BY_USER) ){
-            preparedStatement.setInt(1,account.getId());
+            preparedStatement.setInt(1,borrowingList.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             int idBor = resultSet.getInt("id");
             int idBook = resultSet.getInt("book") ;
