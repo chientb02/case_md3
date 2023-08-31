@@ -54,6 +54,7 @@ public class BookServlet extends HttpServlet implements IBook {
         rq.forward(request, response);
     }
 
+
     public void delete (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         request.setAttribute("id", id);
@@ -89,6 +90,8 @@ public class BookServlet extends HttpServlet implements IBook {
         bookService.create(request);
         display(request, response);
     }
+
+
 
     @Override
     public void updatePost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

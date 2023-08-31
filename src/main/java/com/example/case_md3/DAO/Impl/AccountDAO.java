@@ -13,7 +13,7 @@ import java.util.List;
 public class AccountDAO implements IAccountDAO {
     String SELECT_ALL = "select * from acc";
     String SELECT_BY_ID = "select * from acc where id = ?";
-    String SELECT_BY_ACCOUNT = "select * from acc where gmail = ?;";
+    String SELECT_BY_ACCOUNT = "select * from acc where email = ?;";
     String ADD_ACCOUNT = "insert into acc(email, pass, idPermission) value (?,?,?);";
     String UPDATE_ACCOUNT = "update acc set pass = ? where id = ?";
     String DELETE_ACCOUNT = "delete from acc where id = ?";
@@ -61,7 +61,7 @@ public class AccountDAO implements IAccountDAO {
         }
         return account;
     }
-    public Account finOneByAccount(String gmail, String pass){
+    public Account finOneByAccount(String gmail){
         Account account = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_BY_ACCOUNT)) {
             preparedStatement.setString(1, gmail);

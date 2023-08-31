@@ -28,8 +28,8 @@ public class AccountService {
     public Account findOne(int id) {
         return accountDAO.findOne(id);
     }
-    public Account findOneByAccount(String name, String pass) {
-        return accountDAO.finOneByAccount(name, pass);
+    public Account findOneByAccount(String name) {
+        return accountDAO.finOneByAccount(name);
     }
 
     public boolean update(HttpServletRequest request) throws ServletException, IOException {
@@ -38,11 +38,21 @@ public class AccountService {
         String oldPass = request.getParameter("oldPass");
         String newPass = request.getParameter("newPass");
         String confirmPass = request.getParameter("confirmPass");
+<<<<<<< HEAD
         Account account = findOneByAccount(email,oldPass);
         if (account != null && newPass.equals(confirmPass) && checkRegex(email,newPass) && !checkSameAccount(email)){
             account.setPassword(newPass);
             accountDAO.update(account);
             check = true;
+=======
+        Account account = findOneByAccount(email);
+        if (account != null && newPass.equals(confirmPass) && checkRegex(email,newPass) ){
+            if (!checkSameAccount(email) && account.getPassword().equals(oldPass)){
+                account.setPassword(newPass);
+                accountDAO.update(account);
+                check = true;
+            }
+>>>>>>> editUpdateAcc
         }
         return check;
     }

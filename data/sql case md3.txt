@@ -62,7 +62,8 @@ create table borrowing_book(
 );
 alter table borrowing_book add foreign key(borrowing_list) references borrowing_list(id);
 
-insert into category (name) values ('Sách lịch sử'), ('Sách Tin học'), ('Sách địa lý'), ('Tiểu thuyết'),('Sách toán'), ('Sách lý');
+insert into category (name) values ('Sách lịch sử'), ('Sách Tin học'), ('Sách địa lý'), ('Tiểu thuyết'),('Sách toán'),
+                                   ('Sách lý'),('Ẩm thực'), ('Ngoại ngữ'), ('Kiến trúc'), ('kỹ năng sống') ;
 
 
 insert into publisher (name) values ('Tuổi trẻ'), ('Kim Đồng'), ('Văn hóa việt'), ('test1'),('test2'), ('Sách lý');
@@ -72,7 +73,9 @@ insert into location (name,details) values ('Khu vực tầng 1', 'Gia sách 1, 
                                            ('Khu vực tầng 2', 'Gia sách 1, khu B' ),
                                            ('Khu vực tầng 3', 'Gia sách 1, khu C' );
 insert into book (idPublisher, idCategory, idLocation, name, img, description, status) values
-    (1, 1, 1, 'Lịch sử Việt Nam', 'ảnh 1', 'Lịch sử nh Nguyễn', 'mới'),
-    (2, 2, 1, 'tin học văn phòng', 'ảnh 2', 'Sach PowerPoint', 'cũ'),
-    (4, 1, 3, 'Tiểu thuyết hành trình của Tam Mao ', 'ảnh 3', 'câu chuện 1 cậu bé vô gia cư', 'mới'),
-    (4, 3, 2, 'Công chúa tiên cá', 'ảnh 4', '1 con cá tội nghiệp', 'mới');
+(1, 1, 1, 'Lịch sử Việt Nam', 'https://nhasachmienphi.com/images/thumbnail/nhasachmienphi-lich-su-viet-nam-bang-tranh-tap-8-thoi-le-so.jpg', 'Lịch sử nh Nguyễn', 'mới'),
+(2, 2, 1, 'tin học văn phòng', 'https://nhasachmienphi.com/images/thumbnail/nhasachmienphi-giai-thuat-va-lap-trinh.jpg', 'Sach PowerPoint', 'cũ'),
+(4, 1, 3, 'Tiểu thuyết hành trình của Tam Mao ', 'https://nhasachmienphi.com/images/thumbnail/nhasachmienphi-tam-quoc-chi-tap-3-ngo-chi.jpg', 'câu chuện 1 cậu bé vô gia cư', 'mới'),
+ (4, 3, 2, 'Công chúa tiên cá', 'https://nhasachmienphi.com/images/thumbnail/nhasachmienphi-osin-nha-bo-truong.jpg', '1 con cá tội nghiệp', 'mới'),
+ (2, 2, 2, 'Công chúa tiên cá', 'https://nhasachmienphi.com/images/thumbnail/nhasachmienphi-programming-asp-net-mvc-4.jpg', 'ASP', 'mới'),
+ (2, 2, 3, 'Công chúa tiên cá', 'https://nhasachmienphi.com/images/thumbnail/nhasachmienphi-linux-all-in-one-for-dummies-5th-edition.jpg', 'Linus', 'mới');
