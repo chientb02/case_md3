@@ -20,6 +20,15 @@ public class Book {
         this.description = description;
         this.status = status;
     }
+    public Book(Publisher publisher, Category category, Location location, String name, String image, String description, String status) {
+        this.publisher = publisher;
+        this.category = category;
+        this.location = location;
+        this.name = name;
+        this.image = image;
+        this.description = description;
+        this.status = status;
+    }
 
     public int getId() {
         return id;
