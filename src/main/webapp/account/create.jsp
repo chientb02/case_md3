@@ -137,7 +137,7 @@
           <input name="pass" class="form__password" type="password" placeholder="******">
           <input class="form__submit-btn" type="submit" value="SigUp">
         </form>
-        <p style="color: red; font-style: inherit;font-size: smaller;" class="form__title">${messagers}</p>
+        <p style="color: #a19d9d; font-style: inherit;font-size: smaller;" class="form__title">${messagers}</p>
       </div>
     </div>
   </div>

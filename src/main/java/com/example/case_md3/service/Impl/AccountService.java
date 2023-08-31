@@ -39,18 +39,18 @@ public class AccountService {
         String newPass = request.getParameter("newPass");
         String confirmPass = request.getParameter("confirmPass");
         Account account = findOneByAccount(email,oldPass);
-        if (account != null && newPass.equals(confirmPass) && checkRegex(email,newPass) && checkSameAccount(email, newPass)){
+        if (account != null && newPass.equals(confirmPass) && checkRegex(email,newPass) && !checkSameAccount(email)){
             account.setPassword(newPass);
             accountDAO.update(account);
             check = true;
         }
         return check;
     }
-    public boolean checkSameAccount(String email, String pass){
+    public boolean checkSameAccount(String email){
         boolean check = true;
         List<Account> accounts = findAll();
         for (Account acc : accounts) {
-            if (acc.getEmail().equals(email) || acc.getPassword().equals(pass)){
+            if (acc.getEmail().equals(email)){
                 check = false;
                 break;
             }
@@ -62,7 +62,7 @@ public class AccountService {
         String email = request.getParameter("email");
         String pass = request.getParameter("pass");
         Roles roles = roleDAO.findOne(2);
-        if (checkRegex(email, pass) && checkSameAccount(email, pass)){
+        if (checkRegex(email, pass) && checkSameAccount(email)){
             Account account = new Account(email, pass, roles);
             accountDAO.create(account);
             check = true;

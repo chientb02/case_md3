@@ -137,7 +137,7 @@
           <input name="confirmPass" class="form__password" type="password" placeholder="Confirm password">
           <input class="form__submit-btn" type="submit" value="Login">
         </form>
-        <p style="color: red; font-style: inherit;font-size: smaller;" class="form__title">${messages}</p>
+        <p style="color: #a19d9d; font-style: inherit;font-size: smaller;" class="form__title">${messages}</p>
       </div>
     </div>
   </div>
