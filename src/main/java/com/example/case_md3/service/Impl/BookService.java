@@ -22,7 +22,12 @@ public class BookService implements IGenerateService <Book> {
         List<Book> books = bookDAO.findAll();
         return books;
     }
-
+    public void delete(int id){
+        Book book = bookDAO.findOne(id);
+        if(book!=null){
+            bookDAO.delete(id);
+        }
+    }
     @Override
     public Book findOne(HttpServletRequest request) throws ServletException, IOException {
         return null;

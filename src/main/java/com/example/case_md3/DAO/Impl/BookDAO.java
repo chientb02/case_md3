@@ -26,6 +26,7 @@ public class BookDAO implements IDAO<Book> {
     private String findOne = "select  * from book where id=?; ";
     private String create = "insert into book (idPublisher, idCategory, idLocation, condision, status) values (?,?,?,?,?);";
     private  String update= "update book set (idPublisher = ?,idCategory =?,idLocation=?,condision=?,status=? ) where id=?;";
+    private String delete = "delete from book where id = ?;";
 
     public BookDAO() {
         connection = new MyConnection().getConnection();
@@ -97,6 +98,12 @@ public class BookDAO implements IDAO<Book> {
 
     @Override
     public void delete(int id) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
+            preparedStatement.setInt(1,id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 }
