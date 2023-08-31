@@ -2,6 +2,9 @@ package com.example.case_md3.controller.Impl;
 
 import com.example.case_md3.controller.extendInterface.IBook;
 import com.example.case_md3.model.Book;
+import com.example.case_md3.model.Category;
+import com.example.case_md3.model.Location;
+import com.example.case_md3.model.Publisher;
 import com.example.case_md3.service.Impl.BookService;
 import com.example.case_md3.service.Impl.CategoryService;
 import com.example.case_md3.service.Impl.LocationService;
@@ -31,7 +34,14 @@ public class BookServlet extends HttpServlet implements IBook {
 
     @Override
     public void create(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        List<Category> categories = categoryService.findAll();
+        List<Publisher> publishers = publisherServices.findAll();
+        List<Location> locations = locationService.findAll();
+        request.setAttribute("categories",categories);
+        request.setAttribute("publishers",publishers);
+        request.setAttribute("locations",locations);
+        RequestDispatcher rq = request.getRequestDispatcher("/book/create.jsp");
+        rq.forward(request,response);
     }
 
     @Override
@@ -56,7 +66,8 @@ public class BookServlet extends HttpServlet implements IBook {
 
     @Override
     public void createPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        bookService.create(request);
+        display(request, response);
     }
 
     @Override
