@@ -25,6 +25,7 @@
         <td><c:out value="${bor.getBook().getName()}" /> </td>
         <td><c:out value="${bor.getStatus()}" /> </td>
         <td><c:out value="${bor.getDateBorrowing().toString()}" /> </td>
+            <td><a class="btn btn-danger" href="borrowingBook?action=update&&id=${bor.getId()}">add to cart</a></td>
         </tr>
     </c:forEach>
 </table>

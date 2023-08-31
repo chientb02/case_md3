@@ -65,7 +65,8 @@ public class BorrowingBookServlet extends HttpServlet implements IBorrowingBookS
 
     @Override
     public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        borrowingService.update(request);
+        display(request,response);
     }
 
     @Override
