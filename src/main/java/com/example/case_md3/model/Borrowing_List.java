@@ -3,9 +3,9 @@ package com.example.case_md3.model;
 public class Borrowing_List {
     private int id;
     private Borrowing_Book borrowing_book;
-    private User user;
+    private Account user;
 
-    public Borrowing_List(int id, Borrowing_Book borrowing_book, User user) {
+    public Borrowing_List(int id, Borrowing_Book borrowing_book, Account user) {
         this.id = id;
         this.borrowing_book = borrowing_book;
         this.user = user;
@@ -27,11 +27,11 @@ public class Borrowing_List {
         this.borrowing_book = borrowing_book;
     }
 
-    public User getUser() {
+    public Account getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Account user) {
         this.user = user;
     }
 }

@@ -1,14 +1,20 @@
 package com.example.case_md3.model;
 
-public class User {
+public class Account {
     private int id;
-    private String name;
+    private String email;
     private String password;
     private Roles roles;
 
-    public User(int id, String name, String password, Roles roles) {
+    public Account(int id, String email, String password, Roles roles) {
         this.id = id;
-        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+
+    public Account(String email, String password, Roles roles) {
+        this.email = email;
         this.password = password;
         this.roles = roles;
     }
@@ -21,12 +27,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getEmail() {
+        return email;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

@@ -9,6 +9,10 @@ public class Roles {
         this.permission = permission;
     }
 
+    public Roles(String permission) {
+        this.permission = permission;
+    }
+
     public int getId() {
         return id;
     }
