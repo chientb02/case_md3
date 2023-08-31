@@ -55,8 +55,8 @@ public class BorrowingService implements IBorrowingService {
     @Override
     public void create(HttpServletRequest request) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        int user = (int) session.getAttribute("id");
-        Book book = bookService.findOne((HttpServletRequest) session.getAttribute("idBook"));
+        int user = (int) session.getAttribute("idUser");
+        Book book = bookService.findOne(request);
         Borrowing_Book borrowingBook = new Borrowing_Book(book,"Chưa trả",borrowingListDAO.findOne(user), LocalDateTime.now());
         borrowingBookDAO.create(borrowingBook);
     }

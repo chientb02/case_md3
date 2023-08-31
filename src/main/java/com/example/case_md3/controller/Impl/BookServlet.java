@@ -49,8 +49,10 @@ public class BookServlet extends HttpServlet implements IBook {
     @Override
     public void display(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Book> books = bookService.findAll();
-        request.setAttribute("books", books);
-        RequestDispatcher rq = request.getRequestDispatcher("/book/book.jsp");
+        HttpSession session = request.getSession();
+        session.setAttribute("idUser" ,1);
+        session.setAttribute("books", books);
+        RequestDispatcher rq = request.getRequestDispatcher("/borrowing/book.jsp");
         rq.forward(request, response);
     }
 
