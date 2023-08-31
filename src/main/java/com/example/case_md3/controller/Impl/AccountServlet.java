@@ -121,7 +121,7 @@ public class AccountServlet extends HttpServlet{
     public void loginAcc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        Account returnAccount = returnAcc(request, response);
         if (accountService.checkRegex(returnAccount.getEmail(), returnAccount.getPassword())){
-            Account account = accountService.findOneByAccount(returnAccount.getEmail(), returnAccount.getPassword());
+            Account account = accountService.findOneByAccount(returnAccount.getEmail());
             if(account != null){
                 if (account.getRoles().getId() == 1){
                     //đây là acc admin nha, chuyển qua trang chủ admin nhé

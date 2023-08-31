@@ -28,8 +28,8 @@ public class AccountService {
     public Account findOne(int id) {
         return accountDAO.findOne(id);
     }
-    public Account findOneByAccount(String name, String pass) {
-        return accountDAO.finOneByAccount(name, pass);
+    public Account findOneByAccount(String name) {
+        return accountDAO.finOneByAccount(name);
     }
 
     public boolean update(HttpServletRequest request) throws ServletException, IOException {
@@ -38,19 +38,21 @@ public class AccountService {
         String oldPass = request.getParameter("oldPass");
         String newPass = request.getParameter("newPass");
         String confirmPass = request.getParameter("confirmPass");
-        Account account = findOneByAccount(email,oldPass);
-        if (account != null && newPass.equals(confirmPass) && checkRegex(email,newPass) && checkSameAccount(email, newPass)){
-            account.setPassword(newPass);
-            accountDAO.update(account);
-            check = true;
+        Account account = findOneByAccount(email);
+        if (account != null && newPass.equals(confirmPass) && checkRegex(email,newPass) ){
+            if (!checkSameAccount(email) && account.getPassword().equals(oldPass)){
+                account.setPassword(newPass);
+                accountDAO.update(account);
+                check = true;
+            }
         }
         return check;
     }
-    public boolean checkSameAccount(String email, String pass){
+    public boolean checkSameAccount(String email){
         boolean check = true;
         List<Account> accounts = findAll();
         for (Account acc : accounts) {
-            if (acc.getEmail().equals(email) || acc.getPassword().equals(pass)){
+            if (acc.getEmail().equals(email)){
                 check = false;
                 break;
             }
@@ -62,7 +64,7 @@ public class AccountService {
         String email = request.getParameter("email");
         String pass = request.getParameter("pass");
         Roles roles = roleDAO.findOne(2);
-        if (checkRegex(email, pass) && checkSameAccount(email, pass)){
+        if (checkRegex(email, pass) && checkSameAccount(email)){
             Account account = new Account(email, pass, roles);
             accountDAO.create(account);
             check = true;
