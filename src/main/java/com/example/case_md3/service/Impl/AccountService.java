@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.*;
 
@@ -90,16 +91,14 @@ public class AccountService {
         }
         return checkAcc;
     }
-//    public void checkAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-//        String name = request.getParameter("email");
-//        String pass = request.getParameter("pass");
-//        if (checkRegex(name, pass)){
-//            Account account = accountDAO.finOneByAccount(name, pass);
-//            if (account.getRoles().getId() == 1){
-//                //đây là acc admin nha, chuyển qua trang chủ accmin nhé
-//                response.sendRedirect(""); //=> đây là link nhé mng, link của admin
-//            } else if (checkRegex(name, pass))
-//
-//        }
-//    }
+    public List<Account> searchByName(String name){
+        List<Account> accounts = findAll();
+        List<Account> accountList = new ArrayList<>();
+        for (Account acc : accounts) {
+            if (acc.getEmail().toLowerCase().contains(name.toLowerCase())) {
+                accountList.add(acc);
+            }
+        }
+        return accountList;
+    }
 }

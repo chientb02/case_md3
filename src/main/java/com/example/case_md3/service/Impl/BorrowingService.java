@@ -68,4 +68,5 @@ public class BorrowingService implements IBorrowingService {
         int user = (int) session.getAttribute("id");
         return borrowingBookDAO.findByUser((borrowingListDAO.findOne(accountService.findOne(user).getId())));
     }
+
 }
