@@ -16,22 +16,30 @@
 <body>
 <div class="container">
     <h1 style="text-align: center">Các loại sách trong thư viện</h1>
-    <a class="btn btn-primary" href="/BookServlet?action=create">create</a>
+    <a class="btn btn-primary" href="/book?action=create">create</a>
     <table class="table table-hover">
         <tr>
             <th>STT</th>
-            <th>Tên sản phẩm</th>
-            <th>Danh mục sản phẩm</th>
-
+            <th>Tên sách</th>
+            <th>Tên nhà xuất bản</th>
+            <th>Loại sách</th>
+            <th>Vị trí sách</th>
+            <th>hình ảnh</th>
+            <th>Mô tả sách</th>
+            <th>Trạng thái sách</th>
         </tr>
-        <c:forEach items="${productList}" var="C">
+        <c:forEach items="${books}" var="B">
             <tr>
-                <td>${C.getProductID()}</td>
-                <td>${C.getProductName()}</td>
-                <td>${C.category.categoryName}</td>
-
-                <td><a  class="btn btn-warning" href="Product_SV?action=update&&productID=${C.getProductID()}">Update</a></td>
-                <td><a class="btn btn-danger" href="Product_SV?action=delete&&productID=${C.getProductID()}">Delete</a></td>
+                <td>${B.getId()}</td>
+                <td>${B.getName()}</td>
+                <td>${B.getPublisher().getName()}</td>
+                <td>${B.getCategory().getName()}</td>
+                <td>${B.getLocation().getDetails()}</td>
+                <td>${B.getImage()}</td>
+                <td>${B.getDescription()}</td>
+                <td>${B.getStatus()}</td>
+                <td><a  class="btn btn-warning" href="book?action=update&&id=${B.getId()}">Update</a></td>
+                <td><a class="btn btn-danger" href="book?action=delete&&id=${B.getId()}">Delete</a></td>
             </tr>
         </c:forEach>
     </table>

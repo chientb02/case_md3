@@ -27,14 +27,12 @@ public class PublisherServlet extends HttpServlet  implements IPublisher {
 
     @Override
     public void create(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        RequestDispatcher rq = request.getRequestDispatcher("/publisher/create.jsp");
-//        rq.forward(request, response);
         response.sendRedirect("/publisher/create.jsp");
     }
 
     @Override
     public void display(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<PublisherServlet> publishers = publisherServices.findAll();
+        List<Publisher> publishers = publisherServices.findAll();
         request.setAttribute("publishers", publishers);
         RequestDispatcher rq = request.getRequestDispatcher("/publisher/Publisher.jsp");
         rq.forward(request, response);
@@ -96,7 +94,7 @@ public class PublisherServlet extends HttpServlet  implements IPublisher {
     @Override
     public void createPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         publisherServices.create(request);
-        List<PublisherServlet> publishers = publisherServices.findAll();
+        List<Publisher> publishers = publisherServices.findAll();
         request.setAttribute("publishers", publishers);
         RequestDispatcher rq = request.getRequestDispatcher("/publisher/Publisher.jsp");
         rq.forward(request, response);

@@ -2,6 +2,7 @@ package com.example.case_md3.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class MyConnection {
     private final String URL = "jdbc:mysql://localhost:3306/unicorm_library?useSSL=false" ;

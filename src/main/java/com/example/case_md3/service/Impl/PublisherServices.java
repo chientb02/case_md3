@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 
-public class PublisherServices implements IGenerateService <PublisherServlet> {
+public class PublisherServices implements IGenerateService <Publisher> {
     private PublisherDAO publisherDAO;
 
     public PublisherServices() {
@@ -18,13 +18,13 @@ public class PublisherServices implements IGenerateService <PublisherServlet> {
     }
 
     @Override
-    public List<PublisherServlet> findAll() {
-        List<PublisherServlet> publishers =publisherDAO.findAll();
+    public List<Publisher> findAll() {
+        List<Publisher> publishers =publisherDAO.findAll();
         return publishers;
     }
 
     @Override
-    public PublisherServlet findOne(HttpServletRequest request) throws ServletException, IOException {
+    public Publisher findOne(HttpServletRequest request) throws ServletException, IOException {
         return null;
     }
 

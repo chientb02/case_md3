@@ -22,10 +22,11 @@ public class BookDAO implements IDAO<Book> {
 
 
 
-    private String list = "select  * from book; ";
+    private String list = "select  * from book;";
     private String findOne = "select  * from book where id=?; ";
-    private String create = "insert into book (idPublisher, idCategory, idLocation, condision, status) values (?,?,?,?,?);";
-    private  String update= "update book set (idPublisher = ?,idCategory =?,idLocation=?,condision=?,status=? ) where id=?;";
+    private String create = "insert into book (idPublisher, idCategory, idLocation, name, img, description, status) values (?,?,?,?,?,?,?);";
+    private  String update= "update book set idPublisher = ?,idCategory =?,idLocation=?,name=?,img=?,description=?,status=?  where id=?;";
+    private String delete = "delete from book where id = ?;";
 
     public BookDAO() {
         connection = new MyConnection().getConnection();
@@ -45,13 +46,13 @@ public class BookDAO implements IDAO<Book> {
                 int idLocation = Integer.parseInt(resultSet.getString("idLocation"));
                 String name = resultSet.getString("name");
                 String img = resultSet.getString("img");
-                String condision = resultSet.getString("condision");
+                String description = resultSet.getString("description");
                 String status = resultSet.getString("status");
                 Publisher publisher = publisherDAO.findOne(idPublisher);
                 Category category = categoryDAO.findOne(idCategory);
                 Location location = locationDAO.findOne(idLocation);
 
-                Book book = new Book(id,publisher,category,location,name,img,condision,status);
+                Book book = new Book(id,publisher,category,location,name,img,description,status);
                 books.add(book);
             }
         } catch (SQLException e) {
@@ -87,16 +88,57 @@ public class BookDAO implements IDAO<Book> {
     }
     @Override
     public void update(Book book) {
-
+        try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
+            int idPublisher = book.getPublisher().getId();
+            int idCategory = book.getCategory().getId();
+            int idLocation = book.getLocation().getId();
+            preparedStatement.setInt(1,idPublisher);
+            preparedStatement.setInt(2, idCategory);
+            preparedStatement.setInt(3, idLocation);
+            String name = book.getName();
+            String img = book.getImage();
+            String description = book.getDescription();
+            String status = book.getStatus();
+            int id = book.getId();
+            preparedStatement.setString(4,name);
+            preparedStatement.setString(5, img);
+            preparedStatement.setString(6, description);
+            preparedStatement.setString(7, status);
+            preparedStatement.setInt(8,id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void create(Book book) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(create)) {
+            int idPublisher = book.getPublisher().getId();
+            int idCategory = book.getCategory().getId();
+            int idLocation = book.getLocation().getId();
+            preparedStatement.setInt(1,idPublisher);
+            preparedStatement.setInt(2, idCategory);
+            preparedStatement.setInt(3, idLocation);
+            preparedStatement.setString(4, book.getName());
+            preparedStatement.setString(5, book.getImage());
+            preparedStatement.setString(6, book.getDescription());
+            preparedStatement.setString(7, book.getStatus());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Override
     public void delete(int id) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
+            preparedStatement.setInt(1,id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 }
