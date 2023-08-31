@@ -1,5 +1,6 @@
 package com.example.case_md3.controller.Impl;
 
+import com.example.case_md3.DAO.Impl.BookDAO;
 import com.example.case_md3.controller.extendInterface.IBook;
 import com.example.case_md3.model.Book;
 import com.example.case_md3.model.Category;
@@ -23,13 +24,14 @@ public class BookServlet extends HttpServlet implements IBook {
     private CategoryService categoryService;
     private LocationService locationService;
     private PublisherServices publisherServices;
+    private BookDAO bookDAO;
 
     public BookServlet() {
         bookService = new BookService();
         categoryService = new CategoryService();
         locationService =new LocationService();
         publisherServices = new PublisherServices();
-
+        bookDAO = new BookDAO();
     }
 
     @Override
@@ -61,7 +63,26 @@ public class BookServlet extends HttpServlet implements IBook {
 
     @Override
     public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Book book = bookDAO.findOne(id);
+        request.setAttribute("id",id);
+        List<Publisher> publishers = publisherServices.findAll();
+        List<Location> locations = locationService.findAll();
+        List<Category> categories = categoryService.findAll();
+        String name = book.getName();
+        String image = book.getImage();
+        String description = book.getDescription();
+        String status = book.getStatus();
+        request.setAttribute("name",name);
+        request.setAttribute("image",image);
+        request.setAttribute("description",description);
+        request.setAttribute("status",status);
 
+        request.setAttribute("publishers",publishers);
+        request.setAttribute("locations",locations);
+        request.setAttribute("categories",categories);
+        RequestDispatcher rq = request.getRequestDispatcher("/book/update.jsp");
+        rq.forward(request,response);
     }
 
     @Override
@@ -72,7 +93,8 @@ public class BookServlet extends HttpServlet implements IBook {
 
     @Override
     public void updatePost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        bookService.update(request);
+        display(request, response);
     }
 
     @Override

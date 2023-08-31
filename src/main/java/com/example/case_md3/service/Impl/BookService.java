@@ -48,7 +48,20 @@ public class BookService implements IGenerateService <Book> {
 
     @Override
     public void update(HttpServletRequest request) throws ServletException, IOException {
-
+        int id = Integer.parseInt(request.getParameter("id"));
+        request.setAttribute("id",id);
+        int idPublisher = Integer.parseInt(request.getParameter("idPublisher"));
+        Publisher publisher = publisherDAO.findOne(idPublisher);
+        int idCategory = Integer.parseInt(request.getParameter("idCategory"));
+        Category category = categoryDAO.findOne(idCategory);
+        int idLocation = Integer.parseInt(request.getParameter("idLocation"));
+        Location location = locationDAO.findOne(idLocation);
+        String name = request.getParameter("name");
+        String image = request.getParameter("image");
+        String description = request.getParameter("description");
+        String status = request.getParameter("status");
+        Book book = new Book(id,publisher,category,location,name,image,description,status);
+        bookDAO.update(book);
     }
 
     @Override
