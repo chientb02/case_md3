@@ -52,12 +52,15 @@ public class BorrowingBookDAO implements IBorrowingBook  {
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ONE) ){
             preparedStatement.setInt(1,id);
             ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
             int idBor = resultSet.getInt("id");
             int idBook = resultSet.getInt("book") ;
             String status = resultSet.getString("status");
             int idUser = resultSet.getInt("borrowing_list");
             LocalDateTime date = resultSet.getObject("date_borrowing",LocalDateTime.class);
-            books = new Borrowing_Book(idBor,bookDAO.findOne(idBook),status,borrowingListDAO.findOne(idUser),date);
+            Book book =bookDAO.findOne(idBook);
+            Borrowing_List list = borrowingListDAO.findOne(idUser);
+            books = new Borrowing_Book(idBor,book,status,list,date);}
         }catch (Exception e) {
             e.printStackTrace();
         }
