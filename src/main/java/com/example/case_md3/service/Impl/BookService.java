@@ -43,7 +43,8 @@ public class BookService implements IGenerateService <Book> {
     }
     @Override
     public Book findOne(HttpServletRequest request) throws ServletException, IOException {
-        return null;
+       int id = Integer.parseInt(request.getParameter("id"));
+        return bookDAO.findOne(id);
     }
 
     @Override
