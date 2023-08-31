@@ -16,7 +16,7 @@
 <body>
 <div class="container">
     <h1 style="text-align: center">Các loại sách trong thư viện</h1>
-    <a class="btn btn-primary" href="/BookServlet?action=create">create</a>
+    <a class="btn btn-primary" href="/book?action=create">create</a>
     <table class="table table-hover">
         <tr>
             <th>STT</th>
@@ -38,8 +38,8 @@
                 <td>${B.getImage()}</td>
                 <td>${B.getDescription()}</td>
                 <td>${B.getStatus()}</td>
-                <td><a  class="btn btn-warning" href="BookServlet?action=update&&id=${B.getId()}">Update</a></td>
-                <td><a class="btn btn-danger" href="BookServlet?action=delete&&id=${B.getId()}">Delete</a></td>
+                <td><a  class="btn btn-warning" href="book?action=update&&id=${B.getId()}">Update</a></td>
+                <td><a class="btn btn-danger" href="book?action=delete&&id=${B.getId()}">Delete</a></td>
             </tr>
         </c:forEach>
     </table>

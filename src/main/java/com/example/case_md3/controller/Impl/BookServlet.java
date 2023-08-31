@@ -43,7 +43,10 @@ public class BookServlet extends HttpServlet implements IBook {
     }
 
     public void delete (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        int id = Integer.parseInt(request.getParameter("id"));
+        request.setAttribute("id", id);
+        bookService.delete(id);
+        display(request, response);
     }
 
     @Override
