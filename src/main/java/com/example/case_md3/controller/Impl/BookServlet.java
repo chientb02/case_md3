@@ -50,12 +50,18 @@ public class BookServlet extends HttpServlet implements IBook {
     public void display(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Book> books = bookService.findAll();
         HttpSession session = request.getSession();
-        session.setAttribute("idUser" ,1);
         session.setAttribute("books", books);
-        RequestDispatcher rq = request.getRequestDispatcher("/borrowing/book.jsp");
+        RequestDispatcher rq = request.getRequestDispatcher("home.jsp");
         rq.forward(request, response);
     }
 
+    public void details(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Book book = bookService.findOne(request);
+        HttpSession session = request.getSession();
+        session.setAttribute("book", book);
+        RequestDispatcher rq = request.getRequestDispatcher("/showBook/BookDetail.jsp");
+        rq.forward(request, response);
+    }
 
     public void delete (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -120,6 +126,9 @@ public class BookServlet extends HttpServlet implements IBook {
                 break;
             case "update":
                 update(request, response);
+                break;
+            case "details" :
+                details(request,response);
                 break;
         }
     }

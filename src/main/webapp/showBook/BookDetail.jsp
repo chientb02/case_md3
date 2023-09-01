@@ -15,8 +15,12 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
+
 <div class="container">
-    <h1 style="text-align: center">Các loại sách trong thư viện</h1>
+    <div style="display:flex; justify-content: flex-start;">
+        <a class="btn btn-warning" href="book" style="margin-top: 30px;">Trang chủ</a>
+    </div>
+<%--    <h1 style="text-align: center">Các loại sách trong thư viện</h1>--%>
     <table class="table table-hover">
         <tr style="width: 400px" >
             <td rowspan="7" style="width: 40%">
@@ -45,8 +49,8 @@
 
 
     </table>
-    <a class="btn btn-warning" href="showBookServlet?action=borrowing&&id=${book.getId()}">Mượn sách</a>
-    <a class="btn btn-warning" href="showBookServlet?action=goBack">quay lại</a>
+    <a class="btn btn-warning" href="borrowingBook?action=create&&id=${book.getId()}">Mượn sách</a>
+    <a class="btn btn-warning" href="showBookServlet?action=goBack">Xem sách khác</a>
 </div>
 
 </body>
