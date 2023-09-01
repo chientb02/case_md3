@@ -135,7 +135,7 @@
           <input name="email" class="form__email" type="email" placeholder="Email" required>
           <label style="font-size: xx-small; color: #a19d9d">Password 6 numbers or letters</label>
           <input name="pass" class="form__password" type="password" placeholder="******" required>
-          <input class="form__submit-btn" type="submit" value="SigUp">
+          <input class="form__submit-btn" type="submit" value="Create">
         </form>
         <p style="color: #a19d9d; font-style: inherit;font-size: smaller;" class="form__title">${messagers}</p>
       </div>

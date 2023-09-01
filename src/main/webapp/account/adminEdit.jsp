@@ -143,7 +143,7 @@
               <option class="form__email" value="${r.id}">${r.permission}</option>
             </c:forEach>
           </select>
-          <input class="form__submit-btn" type="submit" value="Login">
+          <input class="form__submit-btn" type="submit" value="Update">
         </form>
         <p style="color: #a19d9d; font-style: inherit;font-size: smaller;" class="form__title">${message}</p>
       </div>

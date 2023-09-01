@@ -136,7 +136,7 @@
         <form action="/account?action=roleUpdate&&id=${roles.getId()}" method="post">
           <h1 class="form__title">Update Account</h1>
           <input name="role" class="form__email" type="text" value="${roles.getPermission()}" required>
-          <input class="form__submit-btn" type="submit" value="Login">
+          <input class="form__submit-btn" type="submit" value="Update">
         </form>
         <p style="color: #a19d9d; font-style: inherit;font-size: smaller;" class="form__title">${message}</p>
       </div>

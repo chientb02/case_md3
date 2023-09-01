@@ -136,7 +136,7 @@
         <form action="/account?action=roleCreate" method="post">
           <h1 class="form__title">Create Account</h1>
           <input name="role" class="form__email" type="text" placeholder="input name" required>
-          <input class="form__submit-btn" type="submit" value="Login">
+          <input class="form__submit-btn" type="submit" value="Create">
         </form>
         <p style="color: #a19d9d; font-style: inherit;font-size: smaller;" class="form__title">${messagers}</p>
       </div>

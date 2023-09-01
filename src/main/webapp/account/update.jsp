@@ -135,7 +135,7 @@
           <input name="oldPass" class="form__password" type="password" placeholder="Old password">
           <input name="newPass" class="form__password" type="password" placeholder="New password">
           <input name="confirmPass" class="form__password" type="password" placeholder="Confirm password">
-          <input class="form__submit-btn" type="submit" value="Login">
+          <input class="form__submit-btn" type="submit" value="Update">
         </form>
         <p style="color: #a19d9d; font-style: inherit;font-size: smaller;" class="form__title">${messages}</p>
       </div>
