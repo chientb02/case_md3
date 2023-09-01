@@ -38,12 +38,6 @@ public class AccountService {
         String oldPass = request.getParameter("oldPass");
         String newPass = request.getParameter("newPass");
         String confirmPass = request.getParameter("confirmPass");
-        Account account = findOneByAccount(email,oldPass);
-        if (account != null && newPass.equals(confirmPass) && checkRegex(email,newPass) && !checkSameAccount(email)){
-            account.setPassword(newPass);
-            accountDAO.update(account);
-            check = true;
-=======
         Account account = findOneByAccount(email);
         if (account != null && newPass.equals(confirmPass) && checkRegex(email,newPass) ){
             if (!checkSameAccount(email) && account.getPassword().equals(oldPass)){
@@ -51,7 +45,7 @@ public class AccountService {
                 accountDAO.update(account);
                 check = true;
             }
->>>>>>> editUpdateAcc
+
         }
         return check;
     }
