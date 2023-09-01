@@ -51,14 +51,15 @@ public class BorrowingBookServlet extends HttpServlet implements IBorrowingBookS
     @Override
     public void create(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         borrowingService.create(request);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/borrowing/book.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("showBookServlet?action=goBack");
         requestDispatcher.forward(request,response);
 
     }
 
     @Override
     public void display(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("borrowing",borrowingService.findByUser(request));
+        HttpSession session = request.getSession();
+        session.setAttribute("borrowing",borrowingService.findByUser(request));
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/borrowing/display.jsp");
         requestDispatcher.forward(request,response);
     }
