@@ -216,7 +216,7 @@ public class AccountServlet extends HttpServlet{
             if(account != null){
                 if (account.getRoles().getId() == 1){
                     //đây là acc admin nha, chuyển qua trang chủ admin nhé
-                    response.sendRedirect("/account/admin.jsp"); //=> đây là link nhé mng, link của admin
+                    response.sendRedirect("/account?action=lisdAd"); //=> đây là link nhé mng, link của admin
                 } else if (account.getRoles().getId() == 2){
                     //đây là acc user nha, chuyển qua trang chủ user nhé
                     HttpSession session = request.getSession();
