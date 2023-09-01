@@ -57,7 +57,7 @@
                             <a class="nav-link" href="about.html"> VỀ CHÚNG TÔI </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="furniture.html">SÁCH MỚI</a>
+                            <a class="nav-link" href="/showBook/showBook.jsp">SÁCH MỚI</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="blog.html">Blog</a>
