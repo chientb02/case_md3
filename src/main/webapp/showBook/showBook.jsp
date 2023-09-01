@@ -18,7 +18,7 @@
 
 <div class="container">
     <div style="display:flex; justify-content: flex-start;">
-        <h1><a class="nav-link" href="book">Trang chủ</a></h1>
+        <h1><a class="nav-link" href="/book">Trang chủ</a></h1>
         <h1 style="text-align: center; padding:6px; margin-left: 100px;">Các loại sách trong thư viện</h1>
     </div>
     <table class="table table-hover">
@@ -45,8 +45,7 @@
                 </td>
                 <td>${B.getDescription()}</td>
                 <td>${B.getStatus()}</td>
-                <td width="auto"><a class="btn btn-warning"
-                                    href="showBookServlet?action=showBookDetail&&id=${B.getId()}">Xem thông tin sách</a>
+                <td width="auto"><a class="btn btn-warning" href="/showBookServlet?action=showBookDetail&&id=${B.getId()}">Xem thông tin sách</a>
                 </td>
             </tr>
         </c:forEach>

@@ -35,8 +35,7 @@
                 <td>${B.getBook().getName()}</td>
                 <td>${B.getStatus()}</td>
                 <td>${B.getDateBorrowing().toString()}</td>
-                <td width="auto"><a class="btn btn-warning"
-                                    href="borrowing?action=update&&id=${B.getId()}">Xem thông tin sách</a>
+                <td width="auto"><a class="btn btn-warning" href="/borrowingBook?action=update&&id=${B.getId()}">Trả sách</a>
                 </td>
             </tr>
         </c:forEach>
