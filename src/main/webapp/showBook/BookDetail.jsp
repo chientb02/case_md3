@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="container">
-    <h1 style="text-align: center">Các loại sách trong thư viện</h1>
+    <h1 style="text-align: center">${book.getName()}</h1>
     <table class="table table-hover">
         <tr style="width: 400px" >
             <td rowspan="7" style="width: 40%">
@@ -24,9 +24,9 @@
             </td>
         </tr>
 
-        <tr>
-            <td style="font-size: 30px; width: 60%">Tên sách:  ${book.getName()}</td><br>
-        </tr>
+<%--        <tr>--%>
+<%--            <td style="font-size: 30px; width: 60%">Tên sách:  ${book.getName()}</td><br>--%>
+<%--        </tr>--%>
         <tr>
             <td style="font-size: 30px; width: 60%"> Tên nhà xuất bản: ${book.getPublisher().getName()}</td><br>
         </tr>
