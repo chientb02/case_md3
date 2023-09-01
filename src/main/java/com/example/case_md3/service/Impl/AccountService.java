@@ -104,4 +104,20 @@ public class AccountService {
         }
         return accountList;
     }
+    public boolean adminUpdate(HttpServletRequest request, int id) throws ServletException, IOException {
+        boolean check = false;
+        int option = Integer.parseInt(request.getParameter("option"));
+        String gmail = request.getParameter("email");
+        String pass = request.getParameter("pass");
+        if (checkRegex(gmail, pass)) {
+            Roles roles = roleDAO.findOne(option);
+            Account account = findOne(id);
+            account.setEmail(gmail);
+            account.setPassword(pass);
+            account.setRoles(roles);
+            accountDAO.updateAccAdmin(account);
+            check = true;
+        }
+        return check;
+    }
 }

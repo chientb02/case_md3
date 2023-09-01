@@ -132,9 +132,9 @@
         <form action="/account?action=create" method="post">
           <h1 class="form__title">Create Account</h1>
           <label style="font-size: xx-small; color: #a19d9d">Email must have gmail.com</label>
-          <input name="email" class="form__email" type="email" placeholder="Email">
+          <input name="email" class="form__email" type="email" placeholder="Email" required>
           <label style="font-size: xx-small; color: #a19d9d">Password 6 numbers or letters</label>
-          <input name="pass" class="form__password" type="password" placeholder="******">
+          <input name="pass" class="form__password" type="password" placeholder="******" required>
           <input class="form__submit-btn" type="submit" value="SigUp">
         </form>
         <p style="color: #a19d9d; font-style: inherit;font-size: smaller;" class="form__title">${messagers}</p>

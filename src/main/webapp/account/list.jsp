@@ -130,8 +130,8 @@
             <div class="form__padding-right">
                 <form action="/account?action=login" method="post">
                     <h1 class="form__title">Login</h1>
-                    <input name="email" class="form__email" type="email" placeholder="Email">
-                    <input name="pass" class="form__password" type="password" placeholder="******">
+                    <input name="email" class="form__email" type="email" placeholder="Email" required>
+                    <input name="pass" class="form__password" type="password" placeholder="******" required>
                     <input class="form__submit-btn" type="submit" value="Login">
                 </form><span>Forgot <a> / </a><a class="form__link" href="/account?action=update">Password</a></span>
                 <p> <a class="form__link" href="/account?action=create">Create your account</a></p>

@@ -13,7 +13,7 @@ public class RoleDAO implements IRoleDAO {
     String SELECT_ALL = "select * from roles";
     String SELECT_BY_ID = "select * from roles where id = ?";
     String ADD_ROLES = "insert into roles(permission) value (?);";
-    String UPDATE_ROLES = "update category set permission = ? where id = ?";
+    String UPDATE_ROLES = "update roles set permission = ? where id = ?";
     String DELETE_ROLES = "delete from roles where id = ?;";
     Connection connection;
     public RoleDAO(){
@@ -27,7 +27,9 @@ public class RoleDAO implements IRoleDAO {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("permission");
-                roles.add(new Roles(id, name));
+                if (id != 1){
+                    roles.add(new Roles(id, name));
+                }
             }
         } catch (SQLException e){
             e.printStackTrace();

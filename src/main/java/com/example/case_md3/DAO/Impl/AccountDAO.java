@@ -11,14 +11,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountDAO implements IAccountDAO {
-    String SELECT_ALL = "select * from acc";
-    String SELECT_BY_ID = "select * from acc where id = ?";
+    String SELECT_ALL = "select * from acc;";
+    String SELECT_BY_ID = "select * from acc where id = ?;";
     String SELECT_BY_ACCOUNT = "select * from acc where email = ?;";
     String ADD_ACCOUNT = "insert into acc(email, pass, idPermission) value (?,?,?);";
     String UPDATE_ACCOUNT = "update acc set pass = ? where id = ?";
-    String DELETE_ACCOUNT = "delete from acc where id = ?";
+    String ADMIN_UPDATE_ACCOUNT = "update acc set email = ?, pass = ?, idPermission = ? where id = ?";
+    String DELETE_ACCOUNT = "delete from acc where id = ?;";
     Connection connection;
     RoleDAO roleDAO;
+    public void updateAccAdmin(Account account) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(ADMIN_UPDATE_ACCOUNT)) {
+            preparedStatement.setString(1, account.getEmail());
+            preparedStatement.setString(2, account.getPassword());
+            preparedStatement.setInt(3, account.getRoles().getId());
+            preparedStatement.setInt(4, account.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public AccountDAO(){
         roleDAO = new RoleDAO();
         connection = new MyConnection().getConnection();
@@ -34,7 +46,9 @@ public class AccountDAO implements IAccountDAO {
                 String pass = resultSet.getString("pass");
                 int idPermission = resultSet.getInt("idPermission");
                 Roles roles = roleDAO.findOne(idPermission);
-                accounts.add(new Account(id, email, pass, roles));
+                if (!roles.getPermission().equals("Admin")){
+                    accounts.add(new Account(id, email, pass, roles));
+                }
             }
         } catch (SQLException e){
             e.printStackTrace();

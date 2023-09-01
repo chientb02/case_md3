@@ -15,7 +15,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/account?action=search">
+<form action="/account?action=search" method="post">
     <div style="display: flex; justify-content: center">
         <div style="margin-top: 20px">
             <!--  tim kiem-->
@@ -35,30 +35,32 @@
         </div>
     </div>
 </form>
-<div class="container" style="width: 30%">
+<div class="container" style="width: 50%">
   <h1 style="text-align: center">List Account</h1>
-  <a style="margin-left: 1px" class="btn btn-primary" href="category?action=role">List role</a>
+  <a style="margin-left: 1px" class="btn btn-primary" href="/account?action=role">List role</a>
   <table style="border-collapse: collapse; border: 1px" class="table table-hover">
     <tr style="margin-top: 500px">
       <th>Id</th>
       <th>Email</th>
       <th>Pass</th>
       <th>Role</th>
+        <th colspan="2"></th>
     </tr>
     <c:forEach items="${acc}" var="a">
       <tr>
         <td><c:out value="${a.getId()}"/></td>
-        <td><c:out value="${a.getGmail}"/></td>
+        <td><c:out value="${a.getEmail()}"/></td>
         <td><c:out value="${a.getPassword()}"/></td>
-        <td><c:out value="${a.getRoles().getId()}"/></td>
-        <td><button class="btn btn-danger" onclick="deleteS(${a.getId()})">Delete</button></td>
+        <td><c:out value="${a.getRoles().getPermission()}"/></td>
+          <td><a class="btn btn-warning" href="/account?action=adminEdit&&id=${a.getId()}">Update</a></td>
+          <td><button class="btn btn-danger" onclick="deleteA(${a.getId()})">Delete</button></td>
       </tr>
     </c:forEach>
   </table>
 </div>
 </body>
 <script>
-  function deleteS(id) {
+  function deleteA(id) {
     if (confirm("Are you sure?")) {
       window.location.href = "account?action=delete&&id=" + id
     }
