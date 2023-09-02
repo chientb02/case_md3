@@ -33,7 +33,7 @@
                 <td>${B.getPublisher().getName()}</td>
                 <td>${B.getCategory().getName()}</td>
                 <td>${B.getLocation().getDetails()}</td>
-                <td>${B.getImage()}</td>
+                <td><img src="${B.getImage()}" alt="" style="width:60px;"></td>
                 <td>${B.getDescription()}</td>
                 <td>${B.getStatus()}</td>
                 <td><a  class="btn btn-warning" href="book?action=update&&id=${B.getId()}">Update</a></td>

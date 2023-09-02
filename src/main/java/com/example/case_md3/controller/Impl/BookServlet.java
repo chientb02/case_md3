@@ -68,7 +68,11 @@ public class BookServlet extends HttpServlet implements IBook {
         int id = Integer.parseInt(request.getParameter("id"));
         request.setAttribute("id", id);
         bookService.delete(id);
-        display(request, response);
+        List<Book> books = bookService.findAll();
+        HttpSession session = request.getSession();
+        session.setAttribute("books", books);
+        RequestDispatcher rq = request.getRequestDispatcher("/book/book.jsp");
+        rq.forward(request, response);
     }
 
     @Override
@@ -97,7 +101,12 @@ public class BookServlet extends HttpServlet implements IBook {
     @Override
     public void createPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         bookService.create(request);
-        display(request, response);
+
+        List<Book> books = bookService.findAll();
+        HttpSession session = request.getSession();
+        session.setAttribute("books", books);
+        RequestDispatcher rq = request.getRequestDispatcher("/book/book.jsp");
+        rq.forward(request, response);
     }
 
 
@@ -105,7 +114,11 @@ public class BookServlet extends HttpServlet implements IBook {
     @Override
     public void updatePost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         bookService.update(request);
-        display(request, response);
+        List<Book> books = bookService.findAll();
+        HttpSession session = request.getSession();
+        session.setAttribute("books", books);
+        RequestDispatcher rq = request.getRequestDispatcher("/book/book.jsp");
+        rq.forward(request, response);
     }
 
     @Override
