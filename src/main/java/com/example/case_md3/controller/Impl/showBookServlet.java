@@ -47,9 +47,6 @@ public class showBookServlet extends HttpServlet{
             case "showBookDetail":
                 showBookDetail(request,response);
                 break;
-            case "search":
-                search(request,response);
-                break;
 
         }
     }
@@ -82,13 +79,30 @@ public class showBookServlet extends HttpServlet{
     public void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("search");
         List<Book> books = bookDAO.search(name);
-        request.setAttribute("books", books);
-        RequestDispatcher rq = request.getRequestDispatcher("/showBook/search.jsp");
-        rq.forward(request,response);
+        int number = books.size();
+
+            if (number != 0) {
+                request.setAttribute("books", books);
+                RequestDispatcher rq = request.getRequestDispatcher("/showBook/search.jsp");
+                rq.forward(request, response);
+            } else{
+                response.sendRedirect("/home.jsp");
+            }
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
 
+            case "":
+                search(request, response);
+                break;
+            case "search":
+                search(request, response);
+                break;
+        }
     }
-
 }
