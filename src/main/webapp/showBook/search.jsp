@@ -22,10 +22,13 @@
     </div>
 <c:forEach items="${bookSearch}" var="B">
 
-    <h1 style="text-align: center">${B.getName()}</h1>
+
     <table class="table table-hover">
+        <tr colsapn="2" style="font-size: 200px ; font-weight: bold">
+            <td style="font-size: 30px; width: 60%"> ${B.getName()}</td><br>
+        </tr>
         <tr style="width: 400px" >
-            <td rowspan="7" style="width: 40%">
+            <td rowspan="6" style="width: 40%">
                 <image src="${B.getImage()}" style="width: 30% ; height: auto"></image>
             </td>
         </tr>
@@ -45,8 +48,9 @@
         <tr >
             <td style="font-size: 30px; width: 60%">Trạng thái sách:  ${B.getStatus()}</td><br>
         </tr>
-
+        <br>
         </c:forEach>
+
     </table>
     <a class="btn btn-warning" href="borrowingBook?action=create&&id=${book.getId()}">Mượn sách</a>
     <a class="btn btn-warning" href="showBookServlet?action=goBack">Xem sách khác</a>
