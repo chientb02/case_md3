@@ -43,6 +43,5 @@
     </table>
 </div>
 <a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/account">Log Out</a>
-
 </body>
 </html>
