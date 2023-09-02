@@ -27,6 +27,7 @@ public class BookDAO implements IDAO<Book> {
     private String create = "insert into book (idPublisher, idCategory, idLocation, name, img, description, status) values (?,?,?,?,?,?,?);";
     private  String update= "update book set idPublisher = ?,idCategory =?,idLocation=?,name=?,img=?,description=?,status=?  where id=?;";
     private String delete = "delete from book where id = ?;";
+    private  String search = "select * from book where name LIKE ?;";
 
     public BookDAO() {
         connection = new MyConnection().getConnection();
@@ -85,6 +86,33 @@ public class BookDAO implements IDAO<Book> {
             e.printStackTrace();
         }
         return book;
+    }
+
+         public List<Book> search(String name){
+        List<Book> books = new ArrayList<>();
+        Book book= null;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(search)) {
+            preparedStatement.setString(1, "%" + name + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int idBook = Integer.parseInt(resultSet.getString("id"));
+                int idPublisher = Integer.parseInt(resultSet.getString("idPublisher"));
+                int idCategory = Integer.parseInt(resultSet.getString("idCategory"));
+                int idLocation = Integer.parseInt(resultSet.getString("idLocation"));
+                String name1 = resultSet.getString("name");
+                String img = resultSet.getString("img");
+                String description = resultSet.getString("description");
+                String status = resultSet.getString("status");
+                Publisher publisher = publisherDAO.findOne(idPublisher);
+                Category category = categoryDAO.findOne(idCategory);
+                Location location = locationDAO.findOne(idLocation);
+                book = new Book(idBook,publisher,category,location,name1,img,description,status);
+                books.add(book);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return books;
     }
     @Override
     public void update(Book book) {

@@ -74,12 +74,15 @@
               </span>
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </a>
-                    <form class="form-inline">
-                        <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
-                    </form>
+
                 </div>
+                <form class="form-inline" action="/showBookServlet?action=search" >
+                    <input type="text" class="form-control" id="search"
+                           name="search" required>
+                    <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </form>
             </div>
         </nav>
     </header>

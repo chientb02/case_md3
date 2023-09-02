@@ -38,7 +38,7 @@ public class AccountService {
         String oldPass = request.getParameter("oldPass");
         String newPass = request.getParameter("newPass");
         String confirmPass = request.getParameter("confirmPass");
-        Account account = findOneByAccount(email);
+           Account account = findOneByAccount(email);
         if (account != null && newPass.equals(confirmPass) && checkRegex(email,newPass) ){
             if (!checkSameAccount(email) && account.getPassword().equals(oldPass)){
                 account.setPassword(newPass);

@@ -20,32 +20,33 @@
     <div style="display:flex; justify-content: flex-start;">
         <a class="btn btn-warning" href="/book" style="margin-top: 30px;">Trang chủ</a>
     </div>
+<c:forEach items="${books}" var="B">
 
-    <h1 style="text-align: center">${book.getName()}</h1>
+    <h1 style="text-align: center">${B.getName()}</h1>
     <table class="table table-hover">
         <tr style="width: 400px" >
             <td rowspan="7" style="width: 40%">
-                <image src="${book.getImage()}" style="width: 30% ; height: auto"></image>
+                <image src="${B.getImage()}" style="width: 30% ; height: auto"></image>
             </td>
         </tr>
 
         <tr>
-            <td style="font-size: 30px; width: 60%"> Tên nhà xuất bản: ${book.getPublisher().getName()}</td><br>
+            <td style="font-size: 30px; width: 60%"> Tên nhà xuất bản: ${B.getPublisher().getName()}</td><br>
         </tr>
         <tr >
-            <td style="font-size: 30px; width: 60%">Loại sách: ${book.getCategory().getName()}</td><br>
+            <td style="font-size: 30px; width: 60%">Loại sách: ${B.getCategory().getName()}</td><br>
         </tr>
         <tr >
-            <td style="font-size: 30px; width: 60%">Vị trí tại:  ${book.getLocation().getDetails()}</td><br>
+            <td style="font-size: 30px; width: 60%">Vị trí tại:  ${B.getLocation().getDetails()}</td><br>
         </tr>
         <tr >
-            <td style="font-size: 30px; width: 60%">Miêu tả:  ${book.getDescription()}</td><br>
+            <td style="font-size: 30px; width: 60%">Miêu tả:  ${B.getDescription()}</td><br>
         </tr>
         <tr >
-            <td style="font-size: 30px; width: 60%">Trạng thái sách:  ${book.getStatus()}</td><br>
+            <td style="font-size: 30px; width: 60%">Trạng thái sách:  ${B.getStatus()}</td><br>
         </tr>
 
-
+        </c:forEach>
     </table>
     <a class="btn btn-warning" href="borrowingBook?action=create&&id=${book.getId()}">Mượn sách</a>
     <a class="btn btn-warning" href="showBookServlet?action=goBack">Xem sách khác</a>
