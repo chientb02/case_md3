@@ -18,42 +18,39 @@
 
 <div class="container">
     <div style="display:flex; justify-content: flex-start;">
-        <a class="btn btn-warning" href="/book" style="margin-top: 30px;">Trang chủ</a>
+        <h1><a class="nav-link" href="/book">Trang chủ</a></h1>
+        <h1 style="text-align: center; padding:6px; margin-left: 100px;">Danh sách sách tìm kiếm</h1>
     </div>
-<c:forEach items="${books}" var="B">
-
-
     <table class="table table-hover">
-        <tr colsapn="2" style="font-size: 200px ; font-weight: bold">
-            <td style="font-size: 30px; width: 60%"> ${B.getName()}</td><br>
-        </tr>
-        <tr style="width: 400px" >
-            <td rowspan="6" style="width: 40%">
-                <image src="${B.getImage()}" style="width: 30% ; height: auto"></image>
-            </td>
-        </tr>
-
         <tr>
-            <td style="font-size: 30px; width: 60%"> Tên nhà xuất bản: ${B.getPublisher().getName()}</td><br>
+            <th>STT</th>
+            <th>Tên sách</th>
+            <th>Tên nhà xuất bản</th>
+            <th>Loại sách</th>
+            <th>Vị trí sách</th>
+            <th>hình ảnh</th>
+            <th>Mô tả sách</th>
+            <th>Trạng thái sách</th>
+            <th colspan="2"></th>
         </tr>
-        <tr >
-            <td style="font-size: 30px; width: 60%">Loại sách: ${B.getCategory().getName()}</td><br>
-        </tr>
-        <tr >
-            <td style="font-size: 30px; width: 60%">Vị trí tại:  ${B.getLocation().getDetails()}</td><br>
-        </tr>
-        <tr >
-            <td style="font-size: 30px; width: 60%">Miêu tả:  ${B.getDescription()}</td><br>
-        </tr>
-        <tr >
-            <td style="font-size: 30px; width: 60%">Trạng thái sách:  ${B.getStatus()}</td><br>
-        </tr>
-        <br>
+        <c:forEach items="${books}" var="B" varStatus="stt">
+            <tr>
+                <td><c:out value="${stt.count}"/></td>
+                <td>${B.getName()}</td>
+                <td>${B.getPublisher().getName()}</td>
+                <td>${B.getCategory().getName()}</td>
+                <td>${B.getLocation().getDetails()}</td>
+                <td>
+                    <image src="${B.getImage()}" style="width: 30px ; height: auto"></image>
+                </td>
+                <td>${B.getDescription()}</td>
+                <td>${B.getStatus()}</td>
+                <td width="auto"><a class="btn btn-warning" href="/showBookServlet?action=showBookDetail&&id=${B.getId()}">Xem thông tin sách</a>
+                </td>
+            </tr>
         </c:forEach>
 
     </table>
-    <a class="btn btn-warning" href="borrowingBook?action=create&&id=${book.getId()}">Mượn sách</a>
-    <a class="btn btn-warning" href="showBookServlet?action=goBack">Xem sách khác</a>
 </div>
 
 </body>
