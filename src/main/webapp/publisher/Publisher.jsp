@@ -16,7 +16,7 @@
 
 </head>
 <body>
-
+<a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/book?action=adminHome">Back to list</a>
 <div class="container">
     <h1 style="text-align: center">Danh sách nhà xuất bản</h1>
     <a class="btn btn-primary" href="/Publisher?action=create">create</a>

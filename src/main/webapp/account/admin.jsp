@@ -36,7 +36,8 @@
     </div>
 </form>
 <div class="container" style="width: 50%">
-  <h1 style="text-align: center">List Account</h1>
+    <a style="border-radius: 10px; color: #36d55b; background-color: white; font-size: medium" class="btn btn-info" class="btn btn-info" href="/book/book.jsp">Back</a>
+    <h1 style="text-align: center">List Account</h1>
   <a style="margin-left: 1px" class="btn btn-primary" href="/account?action=role">List role</a>
   <table style="border-collapse: collapse; border: 1px" class="table table-hover">
     <tr style="margin-top: 500px">

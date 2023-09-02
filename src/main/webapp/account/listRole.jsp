@@ -15,7 +15,7 @@
   <title>Title</title>
 </head>
 <body>
-<a style="border-radius: 10px; color: #ff3f70; background-color: white; font-size: medium" class="btn btn-info" class="btn btn-info" href="/account?action=listAd">Back</a>
+<a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/book?action=adminHome">Back to list</a>
 <div class="container" style="width: 50%">
   <h1 style="text-align: center">List Role</h1><table style="border-collapse: collapse; border: 1px" class="table table-hover">
   <a style="margin-left: 1px" class="btn btn-primary" href="account?action=roleCreate">Create</a>
