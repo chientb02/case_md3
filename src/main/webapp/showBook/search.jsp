@@ -20,7 +20,7 @@
     <div style="display:flex; justify-content: flex-start;">
         <a class="btn btn-warning" href="/book" style="margin-top: 30px;">Trang chủ</a>
     </div>
-<c:forEach items="${bookSearch}" var="B">
+<c:forEach items="${books}" var="B">
 
 
     <table class="table table-hover">

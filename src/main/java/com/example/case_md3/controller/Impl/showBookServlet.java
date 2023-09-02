@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "showBookServlet", value = "/showBookServlet")
-public class showBookServlet extends HttpServlet{
+public class showBookServlet extends HttpServlet {
     private BookService bookService;
     private CategoryService categoryService;
     private LocationService locationService;
@@ -26,10 +26,11 @@ public class showBookServlet extends HttpServlet{
     public showBookServlet() {
         bookService = new BookService();
         categoryService = new CategoryService();
-        locationService =new LocationService();
+        locationService = new LocationService();
         publisherServices = new PublisherServices();
         bookDAO = new BookDAO();
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -39,19 +40,19 @@ public class showBookServlet extends HttpServlet{
         switch (action) {
 
             case "":
-              showBook(request, response);
+                showBook(request, response);
                 break;
             case "goBack":
                 goBack(request, response);
                 break;
             case "showBookDetail":
-                showBookDetail(request,response);
+                showBookDetail(request, response);
                 break;
 
         }
     }
 
-    public void showBook (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void showBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Category> categories = categoryService.findAll();
         request.setAttribute("categories", categories);
         List<Book> books = bookService.findAll();
@@ -60,7 +61,7 @@ public class showBookServlet extends HttpServlet{
         rq.forward(request, response);
     }
 
-    public void goBack (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void goBack(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Category> categories = categoryService.findAll();
         request.setAttribute("categories", categories);
         List<Book> books = bookService.findAll();
@@ -68,33 +69,28 @@ public class showBookServlet extends HttpServlet{
         RequestDispatcher rq = request.getRequestDispatcher("/showBook/showBook.jsp");
         rq.forward(request, response);
     }
+
     public void showBookDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Book book = bookDAO.findOne(id);
-        request.setAttribute("book",book);
+        request.setAttribute("book", book);
         RequestDispatcher rq = request.getRequestDispatcher("/showBook/BookDetail.jsp");
-        rq.forward(request,response);
+        rq.forward(request, response);
     }
 
     public void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("search");
         List<Book> books = bookDAO.search(name);
-<<<<<<< HEAD
-        request.setAttribute("bookSearch", books);
-        RequestDispatcher rq = request.getRequestDispatcher("/showBook/search.jsp");
-        rq.forward(request,response);
-=======
         int number = books.size();
-
-            if (number != 0) {
-                request.setAttribute("books", books);
-                RequestDispatcher rq = request.getRequestDispatcher("/showBook/search.jsp");
-                rq.forward(request, response);
-            } else{
-                response.sendRedirect("/home.jsp");
-            }
->>>>>>> khanh
+        if (number != 0) {
+            request.setAttribute("books", books);
+            RequestDispatcher rq = request.getRequestDispatcher("/showBook/search.jsp");
+            rq.forward(request, response);
+        } else {
+            response.sendRedirect("/home.jsp");
+        }
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -102,10 +98,6 @@ public class showBookServlet extends HttpServlet{
             action = "";
         }
         switch (action) {
-
-            case "":
-                search(request, response);
-                break;
             case "search":
                 search(request, response);
                 break;
