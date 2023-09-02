@@ -82,7 +82,7 @@ public class showBookServlet extends HttpServlet{
     public void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("search");
         List<Book> books = bookDAO.search(name);
-        request.setAttribute("books", books);
+        request.setAttribute("bookSearch", books);
         RequestDispatcher rq = request.getRequestDispatcher("/showBook/search.jsp");
         rq.forward(request,response);
     }

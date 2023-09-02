@@ -53,7 +53,6 @@ public class BorrowingBookServlet extends HttpServlet implements IBorrowingBookS
         borrowingService.create(request);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("showBookServlet?action=goBack");
         requestDispatcher.forward(request,response);
-
     }
 
     @Override

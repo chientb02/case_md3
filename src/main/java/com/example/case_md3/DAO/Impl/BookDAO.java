@@ -90,7 +90,6 @@ public class BookDAO implements IDAO<Book> {
 
          public List<Book> search(String name){
         List<Book> books = new ArrayList<>();
-        Book book= null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(search)) {
             preparedStatement.setString(1, "%" + name + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -106,7 +105,7 @@ public class BookDAO implements IDAO<Book> {
                 Publisher publisher = publisherDAO.findOne(idPublisher);
                 Category category = categoryDAO.findOne(idCategory);
                 Location location = locationDAO.findOne(idLocation);
-                book = new Book(idBook,publisher,category,location,name1,img,description,status);
+                Book book = new Book(idBook,publisher,category,location,name1,img,description,status);
                 books.add(book);
             }
         } catch (SQLException e) {
