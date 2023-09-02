@@ -59,7 +59,6 @@ public class PublisherServlet extends HttpServlet  implements IPublisher {
             action = "";
         }
         switch (action) {
-
             case "":
                 display(request, response);
                 break;
