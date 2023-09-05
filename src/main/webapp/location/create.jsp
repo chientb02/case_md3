@@ -16,20 +16,21 @@
 </head>
 <body>
 <div class="container">
-    <h1 style="text-align: center">Create Category</h1>
+    <h1 style="text-align: center">Tạo mới vị trí</h1>
     <form style="width: 500px; margin: auto"
           action="location?action=create" method="post">
         <div class="mb-3">
-            <label for="location" class="form-label">Name</label>
+            <label for="location" class="form-label">Tên</label>
             <input type="text" class="form-control" id="location"
                    name="name" required>
+            <br><p>Chi tiết</p>
             <input type="text" class="form-control"
                    name="details" required>
         </div>
-        <button class="btn btn-primary" type="submit">Create</button>
+        <button class="btn btn-primary" type="submit">Tạo mới</button>
     </form>
 </div>
-<a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/location">Back to list</a>
+<a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/location">Quay lại</a>
 </body>
 </html>
 

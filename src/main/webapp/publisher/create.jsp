@@ -24,8 +24,8 @@
       <input type="text" class="form-control"
              id="name" name="name" required>
     </div>
-    <button class="btn btn-primary" type="submit">Create</button>
-    <button class="btn btn-secondary" type="reset">Reset</button>
+    <button class="btn btn-primary" type="submit">Tạo mới</button>
+    <button class="btn btn-secondary" type="reset">Đặt lại</button>
   </form>
 </div>
 

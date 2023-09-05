@@ -70,7 +70,7 @@
                 <div class="quote_btn-container">
                     <a href="account">
               <span>
-                LogOut
+                Đăng xuất
               </span>
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </a>

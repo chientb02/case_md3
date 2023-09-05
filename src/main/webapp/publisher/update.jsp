@@ -25,7 +25,7 @@
                    id="name" name="name" value="${publisher.getName()}" required>
         </div>
         <button class="btn btn-primary" type="submit">Cập nhật</button>
-        <button class="btn btn-secondary" type="reset">Reset</button>
+        <button class="btn btn-secondary" type="reset">Đặt lại</button>
     </form>
 </div>
 

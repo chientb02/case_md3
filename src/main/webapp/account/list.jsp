@@ -9,7 +9,7 @@
 <html lang="en" class="">
 <head>
     <meta charset="UTF-8">
-    <title>CodePen Demo</title>
+    <title>Đăng nhập- Đăng kí</title>
     <meta name="robots" content="noindex">
     <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
     <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
@@ -129,12 +129,12 @@
         <div class="form__right">
             <div class="form__padding-right">
                 <form action="/account?action=login" method="post">
-                    <h1 class="form__title">Login</h1>
+                    <h1 class="form__title">Đăng nhập</h1>
                     <input name="email" class="form__email" type="email" placeholder="Email" required>
                     <input name="pass" class="form__password" type="password" placeholder="******" required>
-                    <input class="form__submit-btn" type="submit" value="Login">
-                </form><span>Forgot <a> / </a><a class="form__link" href="/account?action=update">Password</a></span>
-                <p> <a class="form__link" href="/account?action=create">Create your account</a></p>
+                    <input class="form__submit-btn" type="submit" value="Đăng nhập">
+                </form><span>Quên mật khẩu <a> / </a><a class="form__link" href="/account?action=update">Đổi mật khẩu</a></span>
+                <p> <a class="form__link" href="/account?action=create">Đăng kí</a></p>
                 <p style="color: red; font-style: inherit;font-size: smaller;" class="form__title">${messager}</p>
             </div>
         </div>

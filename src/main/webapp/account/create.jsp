@@ -9,7 +9,7 @@
 <html lang="en" class="">
 <head>
   <meta charset="UTF-8">
-  <title>CodePen Demo</title>
+  <title>Đăng nhập- Đăng kí</title>
   <meta name="robots" content="noindex">
   <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
   <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
@@ -121,7 +121,7 @@
   <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js"></script>
 </head>
 <body>
-<a style="border-radius: 10px; color: #36d55b; background-color: white; font-size: medium" class="btn btn-info" class="btn btn-info" href="/account">Back</a>
+<a style="border-radius: 10px; color: #36d55b; background-color: white; font-size: medium" class="btn btn-info" class="btn btn-info" href="/account">Quay lại</a>
 <div class="form">
   <div class="form__box">
     <div class="form__left">
@@ -130,12 +130,12 @@
     <div class="form__right">
       <div class="form__padding-right">
         <form action="/account?action=create" method="post">
-          <h1 class="form__title">Create Account</h1>
-          <label style="font-size: xx-small; color: #a19d9d">Email must have gmail.com</label>
+          <h1 class="form__title">Đăng kí tài khoản</h1>
+          <label style="font-size: xx-small; color: #a19d9d">Nhập Email của bạn</label>
           <input name="email" class="form__email" type="email" placeholder="Email" required>
-          <label style="font-size: xx-small; color: #a19d9d">Password 6 numbers or letters</label>
+          <label style="font-size: xx-small; color: #a19d9d">Nhập mật khẩu</label>
           <input name="pass" class="form__password" type="password" placeholder="******" required>
-          <input class="form__submit-btn" type="submit" value="Create">
+          <input class="form__submit-btn" type="submit" value="Đăng kí">
         </form>
         <p style="color: #a19d9d; font-style: inherit;font-size: smaller;" class="form__title">${messagers}</p>
       </div>

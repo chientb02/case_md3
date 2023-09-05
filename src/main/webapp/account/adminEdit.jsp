@@ -13,7 +13,7 @@
 <html lang="en" class="">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
+  <title>Đăng nhập- Đăng kí</title>
   <meta name="robots" content="noindex">
   <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
   <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
@@ -125,7 +125,7 @@
   <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js"></script>
 </head>
 <body>
-<a style="border-radius: 10px; color: #ff3f70; background-color: white; font-size: medium" class="btn btn-info" class="btn btn-info" href="/account?action=listAd">Back</a>
+<a style="border-radius: 10px; color: #ff3f70; background-color: white; font-size: medium" class="btn btn-info" class="btn btn-info" href="/account?action=listAd">Quay lại</a>
 <div class="form">
   <div class="form__box">
     <div class="form__left">
@@ -134,7 +134,7 @@
     <div class="form__right">
       <div class="form__padding-right">
         <form action="/account?action=adminEdit&&id=${id}" method="post">
-          <h1 class="form__title">Update Account</h1>
+          <h1 class="form__title">Đổi mật khẩu</h1>
           <input name="email" class="form__email" type="email" value="${acc.getEmail()}" required>
           <input name="pass" class="form__password" type="text" value="${acc.getPassword()}" required>
           <select  name="option" >

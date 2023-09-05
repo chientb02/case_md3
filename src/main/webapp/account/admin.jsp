@@ -12,7 +12,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Đăng nhập- Đăng kí</title>
 </head>
 <body>
 <form action="/account?action=search" method="post">
@@ -20,7 +20,7 @@
         <div style="margin-top: 20px">
             <!--  tim kiem-->
             <center class="navbar-collapse" id="navbarSupportedContent">
-                <input name="search" style="width: 300px" class="form-control me-2" placeholder="Search">
+                <input name="search" style="width: 300px" class="form-control me-2" placeholder="Tìm kiếm">
             </center>
         </div>
         <div>
@@ -36,15 +36,15 @@
     </div>
 </form>
 <div class="container" style="width: 50%">
-    <a style="border-radius: 10px; color: #36d55b; background-color: white; font-size: medium" class="btn btn-info" class="btn btn-info" href="/book/book.jsp">Back</a>
-    <h1 style="text-align: center">List Account</h1>
-  <a style="margin-left: 1px" class="btn btn-primary" href="/account?action=role">List role</a>
+    <a style="border-radius: 10px; color: #36d55b; background-color: white; font-size: medium" class="btn btn-info" class="btn btn-info" href="/book/book.jsp">Quay lại</a>
+    <h1 style="text-align: center">Danh sách tài khoản</h1>
+  <a style="margin-left: 1px" class="btn btn-primary" href="/account?action=role">Danh sách quyền</a>
   <table style="border-collapse: collapse; border: 1px" class="table table-hover">
     <tr style="margin-top: 500px">
-      <th>Id</th>
+      <th>Stt</th>
       <th>Email</th>
-      <th>Pass</th>
-      <th>Role</th>
+      <th>Mật khẩu</th>
+      <th>Quyền</th>
         <th colspan="2"></th>
     </tr>
     <c:forEach items="${acc}" var="a">
@@ -53,8 +53,8 @@
         <td><c:out value="${a.getEmail()}"/></td>
         <td><c:out value="${a.getPassword()}"/></td>
         <td><c:out value="${a.getRoles().getPermission()}"/></td>
-          <td><a class="btn btn-warning" href="/account?action=adminEdit&&id=${a.getId()}">Update</a></td>
-          <td><button class="btn btn-danger" onclick="deleteA(${a.getId()})">Delete</button></td>
+          <td><a class="btn btn-warning" href="/account?action=adminEdit&&id=${a.getId()}">Cập nhật</a></td>
+          <td><button class="btn btn-danger" onclick="deleteA(${a.getId()})">Xóa </button></td>
       </tr>
     </c:forEach>
   </table>

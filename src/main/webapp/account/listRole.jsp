@@ -12,23 +12,23 @@
 
 <html>
 <head>
-  <title>Title</title>
+  <title>Đăng nhập- Đăng kí</title>
 </head>
 <body>
-<a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/book?action=adminHome">Back to list</a>
+<a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/book?action=adminHome">Quay lại</a>
 <div class="container" style="width: 50%">
-  <h1 style="text-align: center">List Role</h1><table style="border-collapse: collapse; border: 1px" class="table table-hover">
-  <a style="margin-left: 1px" class="btn btn-primary" href="account?action=roleCreate">Create</a>
+  <h1 style="text-align: center">Danh sách quyền</h1><table style="border-collapse: collapse; border: 1px" class="table table-hover">
+  <a style="margin-left: 1px" class="btn btn-primary" href="account?action=roleCreate">Tạo mới</a>
   <tr style="margin-top: 500px">
-      <th>Id</th>
-      <th>Role</th>
+      <th>STT</th>
+      <th>Quyền</th>
       <th colspan="1"></th>
     </tr>
     <c:forEach items="${roles}" var="l">
       <tr>
         <td><c:out value="${l.getId()}"/></td>
         <td><c:out value="${l.getPermission()}"/></td>
-        <td><a class="btn btn-warning" href="account?action=roleUpdate&&id=${l.getId()}">Update</a></td></tr>
+        <td><a class="btn btn-warning" href="account?action=roleUpdate&&id=${l.getId()}">Cập nhật</a></td></tr>
     </c:forEach>
   </table>
 </div>

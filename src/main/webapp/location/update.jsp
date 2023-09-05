@@ -9,19 +9,19 @@
 </head>
 <body>
 <div class="container">
-    <h1 style="text-align: center">Update location</h1>
+    <h1 style="text-align: center">Thay đổi vị trí</h1>
     <form style="width: 500px; margin: auto" method="post"
           action="/location?action=update&&id=${location.getId()}">
         <div class="mb-3">
-            <label for="location" class="form-label">Name</label>
+            <label for="location" class="form-label">Tên</label>
             <input type="text" class="form-control" id="location"
                    name="name" value="${location.getName()}" required>
             <input type="text" class="form-control"
                    name="details" value="${location.getDetails()}" required>
         </div>
-        <button class="btn btn-primary" type="submit">Update</button>
+        <button class="btn btn-primary" type="submit">Cập nhật</button>
     </form>
-    <a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/location">Back to list</a>
+    <a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/location">Quay lại</a>
 </div>
 </body>
 </html>

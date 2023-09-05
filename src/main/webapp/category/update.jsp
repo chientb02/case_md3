@@ -17,17 +17,17 @@
 </head>
 <body>
 <div class="container">
-    <h1 style="text-align: center">Update Category</h1>
+    <h1 style="text-align: center">Sửa thể loại</h1>
     <form style="width: 500px; margin: auto" method="post"
           action="category?action=update&&id=${category.getId()}">
         <div class="mb-3">
-            <label for="category" class="form-label">Name</label>
+            <label for="category" class="form-label">Tên</label>
             <input type="text" class="form-control" id="category"
                    name="category" value="${category.getName()}" required>
         </div>
-        <button class="btn btn-primary" type="submit">Update</button>
+        <button class="btn btn-primary" type="submit">Cập nhật</button>
     </form>
-    <a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/category">Back to list</a>
+    <a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/category">Quay lại</a>
 </div>
 </body>
 </html>

@@ -12,19 +12,19 @@
 
 <html>
 <head>
-  <title>Title</title>
+  <title>Đăng nhập- Đăng kí</title>
 </head>
 <body>
-<a style="border-radius: 10px; color: #ff3f70; background-color: white; font-size: medium" class="btn btn-info" class="btn btn-info" href="/account?action=listAd">Back</a>
+<a style="border-radius: 10px; color: #ff3f70; background-color: white; font-size: medium" class="btn btn-info" class="btn btn-info" href="/account?action=listAd">Quay lại</a>
 <div class="container" style="width: 50%">
-  <h1 style="text-align: center">Search By Name</h1>
-  <a style="margin-left: 1px" class="btn btn-primary" href="category?action=role">List role</a>
+  <h1 style="text-align: center">Tìm theo tên</h1>
+  <a style="margin-left: 1px" class="btn btn-primary" href="category?action=role">Danh sách quyền</a>
   <table style="border-collapse: collapse; border: 1px" class="table table-hover">
     <tr style="margin-top: 500px">
-      <th>Id</th>
+      <th>STT</th>
       <th>Email</th>
-      <th>Pass</th>
-      <th>Role</th>
+      <th>Mật khẩu</th>
+      <th>Quyền</th>
       <th colspan="2"></th>
     </tr>
     <c:forEach items="${accounts}" var="a">
@@ -33,8 +33,8 @@
         <td><c:out value="${a.getEmail()}"/></td>
         <td><c:out value="${a.getPassword()}"/></td>
         <td><c:out value="${a.getRoles().getPermission()}"/></td>
-        <td><a class="btn btn-warning" href="account?action=adminEdit&&id=${a.getId()}">Update</a></td>
-        <td><button class="btn btn-danger" onclick="deleteA(${a.getId()})">Delete</button></td>
+        <td><a class="btn btn-warning" href="account?action=adminEdit&&id=${a.getId()}">Cập nhật</a></td>
+        <td><button class="btn btn-danger" onclick="deleteA(${a.getId()})">Xóa</button></td>
       </tr>
     </c:forEach>
   </table>

@@ -14,21 +14,21 @@
     <title>Title</title>
 </head>
 <body>
-<a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/book?action=adminHome">Back to list</a>
+<a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/book?action=adminHome">Quay lại</a>
 <div class="container" style="width: 30%">
     <h1 style="text-align: center">List Category</h1>
-    <a style="margin-left: 1px" class="btn btn-primary" href="category?action=create">Create</a>
+    <a style="margin-left: 1px" class="btn btn-primary" href="category?action=create">Tạo mới</a>
     <table style="border-collapse: collapse; border: 1px" class="table table-hover">
         <tr style="margin-top: 500px">
-            <th>Id</th>
-            <th>Name</th>
-            <th>Edit</th>
+            <th>STT</th>
+            <th>Tên</th>
+            <th>Sửa</th>
         </tr>
         <c:forEach items="${categoryList}" var="l">
             <tr>
                 <td><c:out value="${l.getId()}"/></td>
                 <td><c:out value="${l.getName()}"/></td>
-                <td><a class="btn btn-warning" href="category?action=update&&id=${l.getId()}">Update</a></td>
+                <td><a class="btn btn-warning" href="category?action=update&&id=${l.getId()}">Cập nhật</a></td>
             </tr>
         </c:forEach>
     </table>

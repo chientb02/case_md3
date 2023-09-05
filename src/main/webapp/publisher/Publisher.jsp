@@ -16,10 +16,10 @@
 
 </head>
 <body>
-<a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/book?action=adminHome">Back to list</a>
+<a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/book?action=adminHome">Quay lại</a>
 <div class="container">
     <h1 style="text-align: center">Danh sách nhà xuất bản</h1>
-    <a class="btn btn-primary" href="/Publisher?action=create">create</a>
+    <a class="btn btn-primary" href="/Publisher?action=create">Tạo mới</a>
     <table class="table table-hover">
         <tr>
             <th>STT</th>
@@ -31,11 +31,11 @@
                 <td>${P.getId()}</td>
                 <td>${P.getName()}</td>
 
-                <td><a  class="btn btn-warning" href="/Publisher?action=update&&id=${P.getId()}">Update</a></td>
+                <td><a  class="btn btn-warning" href="/Publisher?action=update&&id=${P.getId()}">cập nhật</a></td>
             </tr>
         </c:forEach>
     </table>
-    <a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/Publisher">Back to list</a>
+    <a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/Publisher">Quay lại</a>
 
 </div>
 

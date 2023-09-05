@@ -14,7 +14,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-<a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/book/book.jsp">Back to list</a>
+<a style="margin-left: 100px; margin-top: 100px" class="btn btn-info" href="/book/book.jsp">Quay lại</a>
 <div class="container">
   <h1 style="text-align: center">Tạo mới sách</h1>
   <form style="width: 500px; margin: auto"
@@ -66,8 +66,8 @@
     </div>
 
 
-    <button class="btn btn-primary" type="submit">Create</button>
-    <button class="btn btn-secondary" type="reset">Reset</button>
+    <button class="btn btn-primary" type="submit">Tạo mới</button>
+    <button class="btn btn-secondary" type="reset">Đặt lại</button>
   </form>
 </div>
 
