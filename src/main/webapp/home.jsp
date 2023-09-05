@@ -15,7 +15,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Edgecut</title>
+    <title>Thư viện</title>
 
 
     <!-- bootstrap core css -->
