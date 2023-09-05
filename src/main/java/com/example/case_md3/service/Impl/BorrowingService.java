@@ -1,5 +1,6 @@
 package com.example.case_md3.service.Impl;
 
+import com.example.case_md3.DAO.Impl.BookDAO;
 import com.example.case_md3.DAO.Impl.BorrowingBookDAO;
 import com.example.case_md3.DAO.Impl.BorrowingListDAO;
 import com.example.case_md3.model.Account;
@@ -21,12 +22,14 @@ public class BorrowingService implements IBorrowingService {
     private BookService bookService;
     private BorrowingListService borrowingListService;
     private BorrowingBookDAO borrowingBookDAO;
+    private BookDAO bookDAO ;
 
     public BorrowingService() {
         accountService = new AccountService();
         bookService = new BookService();
         borrowingListService = new BorrowingListService();
         borrowingBookDAO = new BorrowingBookDAO();
+        bookDAO = new BookDAO();
     }
 
     @Override
@@ -45,6 +48,8 @@ public class BorrowingService implements IBorrowingService {
         int id = Integer.parseInt(request.getParameter("id"));
         Borrowing_Book book = borrowingBookDAO.findOne(id);
         book.setStatus("đã trả");
+        Book book1 = book.getBook();
+        bookDAO.unborrowing(book1);
         borrowingBookDAO.update(book);
     }
 
@@ -54,6 +59,7 @@ public class BorrowingService implements IBorrowingService {
         int user = (int) session.getAttribute("idUser");
         borrowingListService.create(request);
         Book book = bookService.findOne(request);
+        bookDAO.borrowing(book);
         Borrowing_Book borrowingBook = new Borrowing_Book(book, "Chưa trả", borrowingListService.findByAccount(accountService.findOne(user)), LocalDateTime.now());
         borrowingBookDAO.create(borrowingBook);
     }

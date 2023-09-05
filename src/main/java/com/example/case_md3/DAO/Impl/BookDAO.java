@@ -28,6 +28,8 @@ public class BookDAO implements IDAO<Book> {
     private  String update= "update book set idPublisher = ?,idCategory =?,idLocation=?,name=?,img=?,description=?,status=?  where id=?;";
     private String delete = "delete from book where id = ?;";
     private  String search = "select * from book where name LIKE ?;";
+    private String borrowing = "update book set description = 'đã có người mượn' where id = ? " ;
+    private String unBorrowing = "update book set description = 'còn' where id = ? " ;
 
     public BookDAO() {
         connection = new MyConnection().getConnection();
@@ -35,6 +37,23 @@ public class BookDAO implements IDAO<Book> {
         locationDAO = new LocationDAO();
         publisherDAO = new PublisherDAO();
     }
+    public void borrowing (Book book) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(borrowing)) {
+            preparedStatement.setInt(1, book.getId());
+            preparedStatement.executeUpdate();
+        }catch (Exception e ) {
+            e.printStackTrace();
+        }
+    }
+    public void unborrowing (Book book) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(unBorrowing)) {
+            preparedStatement.setInt(1, book.getId());
+            preparedStatement.executeUpdate();
+        }catch (Exception e ) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public List<Book> findAll() {
         List<Book> books = new ArrayList<>();

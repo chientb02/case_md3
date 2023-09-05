@@ -23,31 +23,39 @@
 
     <h1 style="text-align: center">${book.getName()}</h1>
     <table class="table table-hover">
-        <tr style="width: 400px" >
+        <tr style="width: 400px">
             <td rowspan="7" style="width: 40%">
                 <image src="${book.getImage()}" style="width: 30% ; height: auto"></image>
             </td>
         </tr>
 
         <tr>
-            <td style="font-size: 30px; width: 60%"> Tên nhà xuất bản: ${book.getPublisher().getName()}</td><br>
+            <td style="font-size: 30px; width: 60%"> Tên nhà xuất bản: ${book.getPublisher().getName()}</td>
+            <br>
         </tr>
-        <tr >
-            <td style="font-size: 30px; width: 60%">Loại sách: ${book.getCategory().getName()}</td><br>
+        <tr>
+            <td style="font-size: 30px; width: 60%">Loại sách: ${book.getCategory().getName()}</td>
+            <br>
         </tr>
-        <tr >
-            <td style="font-size: 30px; width: 60%">Vị trí tại:  ${book.getLocation().getDetails()}</td><br>
+        <tr>
+            <td style="font-size: 30px; width: 60%">Vị trí tại: ${book.getLocation().getDetails()}</td>
+            <br>
         </tr>
-        <tr >
-            <td style="font-size: 30px; width: 60%">Miêu tả:  ${book.getDescription()}</td><br>
+        <tr>
+            <td style="font-size: 30px; width: 60%"> Miêu tả: ${book.getStatus()}</td>
+            <br>
         </tr>
-        <tr >
-            <td style="font-size: 30px; width: 60%">Trạng thái sách:  ${book.getStatus()}</td><br>
+        <tr>
+            <td style="font-size: 30px; width: 60%">Trạng thái sách: ${book.getDescription()}</td>
+            <br>
         </tr>
 
 
     </table>
-    <a class="btn btn-warning" href="borrowingBook?action=create&&id=${book.getId()}">Mượn sách</a>
+
+    <c:if test="${book.getDescription() eq 'còn'}">
+        <a class="btn btn-warning" href="borrowingBook?action=create&&id=${book.getId()}">Mượn sách</a>
+    </c:if>
     <a class="btn btn-warning" href="showBookServlet?action=goBack">Xem sách khác</a>
 </div>
 

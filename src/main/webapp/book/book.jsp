@@ -9,11 +9,11 @@
 <body>
 <div class="container">
     <h1 style="text-align: center">Các loại sách trong thư viện</h1>
-    <a class="btn btn-primary" href="/book?action=create">create</a>
-    <a class="btn btn-primary" href="/category">List Category</a>
-    <a class="btn btn-primary" href="/location">List Location</a>
-    <a class="btn btn-primary" href="/Publisher">List Publisher</a>
-    <a class="btn btn-primary" href="/account?action=listAd">List Account</a>
+    <a class="btn btn-primary" href="/book?action=create">Tạo mới sách</a>
+    <a class="btn btn-primary" href="/category">Các Thể Loại</a>
+    <a class="btn btn-primary" href="/location">Vị trí</a>
+    <a class="btn btn-primary" href="/Publisher">Các Nhà Xuất Bản</a>
+    <a class="btn btn-primary" href="/account?action=listAd">Danh sách tài khoản</a>
     <table class="table table-hover">
         <tr>
             <th>STT</th>
@@ -26,9 +26,9 @@
             <th>Trạng thái sách</th>
             <th colspan="2"></th>
         </tr>
-        <c:forEach items="${books}" var="B">
+        <c:forEach items="${books}" var="B" varStatus="aa">
             <tr>
-                <td>${B.getId()}</td>
+                <td>${aa.count}</td>
                 <td>${B.getName()}</td>
                 <td>${B.getPublisher().getName()}</td>
                 <td>${B.getCategory().getName()}</td>
